@@ -20,7 +20,7 @@ function Navbar() {
                 <AuthLinks />
             </div>
             <div className="flex xl:hidden">
-                <i className="text-black cursor-pointer ri-menu-4-fill ri-xl" onClick={() => setOpen(!open)}></i>
+                <i className="text-black cursor-pointer ri-menu-4-fill ri-2x" onClick={() => setOpen(!open)}></i>
                 {open && (
                     <div className="absolute right-0 z-10 flex flex-col items-center w-full gap-6 py-8 text-xl font-medium bg-white shadow-md top-20">
                         <a href="/" className="relative">Home</a>
