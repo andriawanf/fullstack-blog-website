@@ -1,6 +1,7 @@
 import { useState } from "react";
-import AuthLinks from "../components/authLinks/AuthLinks"
-import ThemeToggle from "../components/themeToggle/ThemeToggle"
+import AuthLinks from "../components/authLinks/AuthLinks";
+import ThemeToggle from "../components/themeToggle/ThemeToggle";
+import { Link } from "react-router-dom";
 
 
 function Navbar() {
@@ -13,8 +14,8 @@ function Navbar() {
             </div>
             <div className="items-center hidden gap-8 font-medium xl:flex font-dm lg:gap-5">
                 <ThemeToggle />
-                <a href="/" className="relative">Home</a>
-                <a href="/" className="text-disableText">Blogs</a>
+                <Link to="/" className="relative">Home</Link>
+                <Link to="blog" className="text-disableText">Blogs</Link>
                 <a href="/" className="text-disableText">About</a>
                 <a href="/" className="text-disableText">Contact</a>
                 <AuthLinks />
