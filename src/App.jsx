@@ -11,7 +11,7 @@ import WriteBlog from "./pages/writeBlog/WriteBlog";
 function App() {
 
   return (
-    <div className="w-screen h-full overflow-hidden">
+    <main className="w-screen h-full overflow-hidden">
       <ThemeContextProvider>
         <ThemeProvider>
           <Router>
@@ -23,7 +23,7 @@ function App() {
           </Router>
         </ThemeProvider>
       </ThemeContextProvider>
-    </div>
+    </main>
   )
 }
 

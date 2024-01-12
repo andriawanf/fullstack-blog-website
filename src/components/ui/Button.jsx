@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
 
-function Button({title, icon}) {
+function Button({ title, icon, bgColor }) {
   return (
-    <button className="py-2.5 bg-primary px-7 rounded-full justify-center text-black font-dm font-medium w-full items-center flex gap-2">{title} <i className={icon}></i></button>
+    <a
+      className={`relative inline-flex items-center px-8 py-3 overflow-hidden text-black ${bgColor} rounded-xl group focus:outline-none focus:ring ${bgColor}`}
+      href="/download"
+    >
+      <i className={`${icon} absolute transition-all -end-full group-hover:end-4`}></i>
+      <span className="text-sm font-medium transition-all font-nunito group-hover:me-4"> {title} </span>
+    </a>
   )
 }
 

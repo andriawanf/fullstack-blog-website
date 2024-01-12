@@ -2,7 +2,7 @@ import Button from "../ui/Button"
 
 function Featured() {
     return (
-        <div className="pt-8 xl:pt-10 ">
+        <section className="pt-8 xl:pt-10 ">
             <h1 className="pb-10 font-dm font-bold text-5xl leading-[3.5rem] xl:leading-[4.rem] 2xl:leading-[4.5rem] 2xl:text-6xl">Seize the Universe within Your Thoughts, <span className="text-primary">Grasp It All!</span></h1>
             <div className="flex flex-col items-center gap-8 overflow-hidden xl:flex-row lg:gap-10">
                 <div className="flex-1 w-full">
@@ -13,11 +13,11 @@ function Featured() {
                     <h1 className="text-3xl font-semibold sm:text-4xl md:text-4xl font-dm lg:text-5xl xl:text-4xl 2xl:text-6xl 2xl:line-clamp-3">It takes a planet to explore the universe.</h1>
                     <p className="w-full text-sm leading-relaxed sm:text-base md:text-base font-nunito text-disableText line-clamp-3 lg:text-lg lg:w-full">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem deleniti dolore corrupti dicta doloremque? Saepe enim sequi sint autem. Obcaecati, laudantium excepturi quidem cumque, corrupti quasi exercitationem aperiam pariatur quod ipsum aliquam minima neque quas ipsam veniam, temporibus officiis. Eveniet odit quis sed minus ab odio officia nulla quibusdam! </p>
                     <div className="w-fit">
-                        <Button title="Continue Reading" icon="ri-arrow-right-line " />
+                        <Button title="Continue Reading" icon="ri-arrow-right-line" bgColor={"bg-primary"}/>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

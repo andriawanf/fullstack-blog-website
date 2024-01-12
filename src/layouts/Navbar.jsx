@@ -1,6 +1,6 @@
 import { useState } from "react";
-import AuthLinks from "../components/authLinks/AuthLinks";
-import ThemeToggle from "../components/themeToggle/ThemeToggle";
+import AuthLinks from "../features/authLinks/AuthLinks";
+import ThemeToggle from "../features/themeToggle/ThemeToggle";
 import { Link } from "react-router-dom";
 
 
@@ -8,7 +8,7 @@ function Navbar() {
     const [open, setOpen] = useState(false);
 
     return (
-        <div className="flex items-center justify-between w-full h-20 ">
+        <nav className="flex items-center justify-between w-full h-20 ">
             <div>
                 <h1 className="text-2xl font-bold font-dm">OutOfTheBoys!</h1>
             </div>
@@ -16,7 +16,7 @@ function Navbar() {
                 <ThemeToggle />
                 <Link to="/" className="relative">Home</Link>
                 <Link to="blog" className="text-disableText">Blogs</Link>
-                <a href="/" className="text-disableText">About</a>
+                <a href="#all-blogs" className="text-disableText">About</a>
                 <a href="/" className="text-disableText">Contact</a>
                 <AuthLinks />
             </div>
@@ -33,7 +33,7 @@ function Navbar() {
                     </div>
                 )}
             </div>
-        </div>
+        </nav>
     )
 }
 
