@@ -3,6 +3,7 @@ import Navbar from "../layouts/Navbar.jsx";
 import Featured from "../components/featured/Featured";
 import AllBlogs from "../components/allBlogs/AllBlogs";
 import Footers from "../components/footer/Footers";
+import CategoriesSection from "../components/CategoriesSection";
 
 function HomePage() {
     return (
@@ -10,8 +11,8 @@ function HomePage() {
             <PageContainer >
                 <Navbar />
                 <Featured />
-                {/* <LatestPosts /> */}
                 <AllBlogs />
+                <CategoriesSection />
                 <Footers />
             </PageContainer>
         </>

@@ -25,7 +25,7 @@ function AuthLinks() {
                         className="relative inline-flex items-center px-8 py-3 overflow-hidden text-black rounded-xl group focus:outline-none focus:ring bg-primary"
                         onClick={() => logout()}
                     >
-                        <i className="absolute transition-all ri-login-box-line -end-full group-hover:end-4"></i>
+                        <i className="absolute transition-all ri-logout-box-line -end-full group-hover:end-4"></i>
                         <span className="text-sm font-medium transition-all font-nunito group-hover:me-4"> Logout </span>
                     </button>
                 </>

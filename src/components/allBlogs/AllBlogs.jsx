@@ -6,38 +6,11 @@ import Categories from "../ui/Categories";
 import axios from "axios";
 import { useState } from "react";
 import Pagination from "../ui/Pagination";
+import { useContext } from "react";
+import { AllBlogsContext } from "../../contexts/BlogsContext";
 
 function AllBlogs() {
-    const BASE_URL = "https://jsonplaceholder.typicode.com";
-
-    const [blogs, setBlogs] = useState([]);
-    const [isLodaing, setIsLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(6)
-    
-    useEffect(() => {
-        const fetchPosts = async() => {
-            setIsLoading(true);
-            try {
-                await axios.get(`${BASE_URL}/posts`)
-                    .then(data => setBlogs(data.data))
-            } catch (error) {
-                console.log(error.message)
-            }
-            setIsLoading(false);
-        }
-        fetchPosts();
-    }, []);
-
-    if(isLodaing && blogs.length === 0){
-        return <div>Loading...</div>;
-    }
-
-    // Get current page
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPage = indexOfLastPost - postsPerPage;
-    const currentPosts = blogs.slice(indexOfFirstPage, indexOfLastPost);
-    const howManyPages = Math.ceil(blogs.length/postsPerPage);
+    const {currentPosts} = useContext(AllBlogsContext);
 
     return (
         <section id="all-blogs" className="w-full pt-10 pb-10 mt-10 overflow-hidden">
@@ -55,9 +28,6 @@ function AllBlogs() {
                 {currentPosts.map((post) => {
                     return <Card body={post.body} title={post.title} key={post.id}/>
                 })}
-            </div>
-            <div>
-                <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
             </div>
         </section>
     )
