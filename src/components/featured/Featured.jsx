@@ -1,23 +1,68 @@
-import Button from "../ui/Button"
+import Button from "../ui/Button";
+import { useKeenSlider } from "keen-slider/react"
+import "keen-slider/keen-slider.min.css"
+import Card from "../ui/Card";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function Featured() {
+    const [blogsSlider, setBlogsSlider] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const [sliderRef] = useKeenSlider({
+        slides: {
+            perView: 2,
+            spacing: 5,
+        },
+    })
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            setIsLoading(true);
+            try {
+                const respones = await axios.get(`${import.meta.env.VITE_URL_API_JSONPLACEHOLDER}/posts`);
+                const sliceBlogs = respones.data.slice(0, 6);
+                setBlogsSlider(sliceBlogs);
+            } catch (error) {
+                console.log(error.message)
+            }
+            setIsLoading(false);
+        }
+        fetchPosts();
+    }, []);
+
+    if (isLoading) {
+        return <div>loading....</div>
+    }
+
+
     return (
-        <section className="pt-8 xl:pt-10 ">
-            <h1 className="pb-10 font-dm font-bold text-5xl leading-[3.5rem] xl:leading-[4.rem] 2xl:leading-[4.5rem] 2xl:text-6xl">Seize the Universe within Your Thoughts, <span className="text-primary">Grasp It All!</span></h1>
-            <div className="flex flex-col items-center gap-8 overflow-hidden xl:flex-row lg:gap-10">
-                <div className="flex-1 w-full">
-                    <img src="https://images.unsplash.com/photo-1416163255873-f17745e8f851?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fHllbGxvdyUyMGFlc3RoZXRpY3xlbnwwfDB8MHx8fDA%3D" alt="blog-1" className="object-cover w-full rounded-3xl" />
+        <div className="relative w-full">
+            <div className="mx-auto">
+                <div className="flex flex-col justify-center py-10 ">
+                    <h1 className="max-w-4xl mt-8 text-3xl font-bold leading-relaxed tracking-tight md:text-4xl lg:text-6xl font-dm">
+                        Transforming Minds, One Insight at a Time.
+                    </h1>
+                    <p className="max-w-3xl mt-8 text-lg text-disableText font-nunito">
+                        Dive headfirst into the vast ocean of limitless knowledge, where every wave of information propels you forward. Emerge not just as an individual but as the trendsetting ambassador of wisdom within the dynamic youth brigade.
+                    </p>
+                    <div className="mt-8">
+                        <Button title="Readmore" icon="ri-arrow-right-line" bgColor="bg-primary" />
+                    </div>
                 </div>
-                <div className="flex flex-col flex-1 w-full gap-3 lg:gap-4 2xl:gap-3">
-                    <p className="text-sm font-normal font-nunito text-disableText xl:text-lg">Desember 26, 2023 <span className="px-2"><i className="ri-circle-fill ri-xs text-primary"></i></span> Blog</p>
-                    <h1 className="text-3xl font-semibold sm:text-4xl md:text-4xl font-dm lg:text-5xl xl:text-4xl 2xl:text-6xl 2xl:line-clamp-3">It takes a planet to explore the universe.</h1>
-                    <p className="w-full text-sm leading-relaxed sm:text-base md:text-base font-nunito text-disableText line-clamp-3 lg:text-lg lg:w-full">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem deleniti dolore corrupti dicta doloremque? Saepe enim sequi sint autem. Obcaecati, laudantium excepturi quidem cumque, corrupti quasi exercitationem aperiam pariatur quod ipsum aliquam minima neque quas ipsam veniam, temporibus officiis. Eveniet odit quis sed minus ab odio officia nulla quibusdam! </p>
-                    <div className="w-fit">
-                        <Button title="Continue Reading" icon="ri-arrow-right-line" bgColor={"bg-primary"}/>
+                <div className="p-4 bg-gray-200 rounded-2xl">
+                    <div ref={sliderRef} className="keen-slider">
+                        {blogsSlider.map((blog) => {
+                            return (
+                                <div key={blog.id} className="keen-slider__slide">
+                                    <Card title={blog.title} body={blog.body} />
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     )
 }
 

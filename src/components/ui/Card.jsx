@@ -20,7 +20,7 @@ function Card({ body, title }) {
                     </span>
                 </time>
                 <a href="#">
-                    <h3 className="text-xl font-semibold text-gray-900 font-dm">{title}</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 font-dm line-clamp-2">{title}</h3>
                 </a>
 
                 <p className="mt-2 text-gray-500 line-clamp-3 text-sm/relaxed font-nunito">
