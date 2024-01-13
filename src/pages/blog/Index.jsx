@@ -16,9 +16,9 @@ export default function Index() {
                 <section>
                     <div className="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
                         <header className="flex flex-col items-center justify-center">
-                            <h2 className="text-xl font-bold text-gray-900 sm:text-4xl font-dm">Blogs Collections</h2>
+                            <h2 className="text-xl font-bold sm:text-4xl font-dm">Blogs Collections</h2>
 
-                            <p className="max-w-2xl mt-4 text-center text-gray-500 font-nunito">
+                            <p className="max-w-2xl mt-4 text-center text-disableText font-nunito">
                                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio nulla eligendi sunt velit, tenetur tempore eos sequi quod, omnis vitae voluptates officiis quis iure consectetur.
                             </p>
                         </header>

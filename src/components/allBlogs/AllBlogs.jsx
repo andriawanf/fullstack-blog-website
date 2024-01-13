@@ -16,7 +16,7 @@ function AllBlogs() {
         <section id="all-blogs" className="w-full pt-10 pb-10 mt-10 overflow-hidden">
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4 ">
-                    <h1 className="text-3xl font-semibold font-dm">All Blogs</h1>
+                    <h1 className="text-3xl font-semibold font-dm">Recent Blogs</h1>
                     <div className="w-[0.08rem] h-6 bg-disableText/40"></div>
                     <Categories />
                 </div>

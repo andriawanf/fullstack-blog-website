@@ -20,7 +20,7 @@ export default {
       colors: {
         'primary': "#FFD012",
         'activeText': "#24292E",
-        'disableText': "#6c757d",
+        'disableText': "#6b7280",
         'ligthBg': "#FFF9DE",
       }
     },

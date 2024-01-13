@@ -10,7 +10,7 @@ function Card({ body, title }) {
             />
 
             <div className="p-4">
-                <time dateTime="2022-10-10" className="block text-xs text-gray-500 font-nunito">
+                <time dateTime="2022-10-10" className="block text-xs font-nunito">
                     <span className="pr-4">10th Oct 2022</span>
                     <span
                         className="inline-flex items-center justify-center rounded-full bg-primary/20 px-2.5 py-0.5 text-black"
@@ -20,10 +20,10 @@ function Card({ body, title }) {
                     </span>
                 </time>
                 <a href="#">
-                    <h3 className="text-xl font-semibold text-gray-900 font-dm line-clamp-2">{title}</h3>
+                    <h3 className="text-xl font-semibold font-dm line-clamp-2">{title}</h3>
                 </a>
 
-                <p className="mt-2 text-gray-500 line-clamp-3 text-sm/relaxed font-nunito">
+                <p className="mt-2 line-clamp-3 text-sm/relaxed font-nunito text-disableText">
                     {body}
                 </p>
             </div>

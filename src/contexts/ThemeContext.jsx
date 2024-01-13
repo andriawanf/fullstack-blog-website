@@ -11,7 +11,7 @@ export const ThemeContext = createContext();
 const getFromLocalStorage = () => {
     if (typeof window !== undefined){
         const value = localStorage.getItem("theme");
-        return value || 'light';
+        return value || 'bg-[#f5f5f4] text-[#0d0d0d]';
     }
 };
 
@@ -21,7 +21,7 @@ export const ThemeContextProvider = ({children}) => {
     });
 
     const toggle = () => {
-        setTheme(theme === 'light' ? "bg-black text-white " : "light")
+        setTheme(theme === 'bg-[#f5f5f4] text-[#0d0d0d]' ? "bg-[#0d0d0d] text-[#f5f5f4] " : "bg-[#f5f5f4] text-[#0d0d0d]")
     };
 
     useEffect(() => {

@@ -4,6 +4,7 @@ import "keen-slider/keen-slider.min.css"
 import Card from "../ui/Card";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Featured() {
     const [blogsSlider, setBlogsSlider] = useState([]);
@@ -47,7 +48,9 @@ function Featured() {
                         Dive headfirst into the vast ocean of limitless knowledge, where every wave of information propels you forward. Emerge not just as an individual but as the trendsetting ambassador of wisdom within the dynamic youth brigade.
                     </p>
                     <div className="mt-8">
-                        <Button title="Readmore" icon="ri-arrow-right-line" bgColor="bg-primary" />
+                        <Link to="/blog">
+                            <Button title="Readmore" icon="ri-arrow-right-line" bgColor="bg-primary" />
+                        </Link>
                     </div>
                 </div>
                 <div className="p-4 bg-gray-200 rounded-2xl">
