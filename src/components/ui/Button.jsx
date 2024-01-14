@@ -3,7 +3,7 @@
 function Button({ title, icon, bgColor }) {
   return (
     <a
-      className={`relative inline-flex items-center px-8 py-3 overflow-hidden text-black ${bgColor} rounded-xl group focus:outline-none focus:ring ${bgColor}`}
+      className={`relative inline-flex items-center px-8 py-3 overflow-hidden text-primaryContent ${bgColor} rounded-xl group focus:outline-none focus:ring ${bgColor}`}
       href="/download"
     >
       <i className={`${icon} absolute transition-all -end-full group-hover:end-4`}></i>

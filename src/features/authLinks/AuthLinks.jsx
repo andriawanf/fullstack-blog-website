@@ -12,7 +12,7 @@ function AuthLinks() {
         <>
             {!isAuthenticated ? (
                 <button
-                    className={theme === 'light' ? "relative inline-flex items-center px-8 py-3 overflow-hidden text-black rounded-xl group focus:outline-none focus:ring bg-primary" : "relative inline-flex items-center px-8 py-3 overflow-hidden text-black rounded-xl group focus:outline-none focus:ring bg-primary"}
+                    className={theme === 'bg-primaryBackground text-primaryContent' ? "relative inline-flex items-center px-8 py-3 overflow-hidden text-primaryContent rounded-xl group focus:outline-none focus:ring bg-primary" : "relative inline-flex items-center px-8 py-3 overflow-hidden text-primaryContent rounded-xl group focus:outline-none focus:ring bg-primary"}
                     onClick={() => loginWithRedirect()}
                 >
                     <i className="absolute transition-all ri-login-box-line -end-full group-hover:end-4"></i>
@@ -22,7 +22,7 @@ function AuthLinks() {
                 <>
                     <Link to="blog/write" className="text-disableText">Write</Link>
                     <button
-                        className="relative inline-flex items-center px-8 py-3 overflow-hidden text-black rounded-xl group focus:outline-none focus:ring bg-primary"
+                        className="relative inline-flex items-center px-8 py-3 overflow-hidden text-primaryContent rounded-xl group focus:outline-none focus:ring bg-primary"
                         onClick={() => logout()}
                     >
                         <i className="absolute transition-all ri-logout-box-line -end-full group-hover:end-4"></i>

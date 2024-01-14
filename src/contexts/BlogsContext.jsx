@@ -5,6 +5,7 @@ import { useState } from "react";
 import { createContext } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import Loader from "../components/ui/Loader";
 
 
 
@@ -33,7 +34,7 @@ export default function BlogsContext({ children }){
     }, []);
 
     if (isLoading && blogs.length === 0) {
-        return <div>Loading...</div>;
+        return <Loader />;
     }
     // Get current page
     const indexOfLastPost = currentPage * postsPerPage;

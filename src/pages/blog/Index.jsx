@@ -5,9 +5,11 @@ import Card from "../../components/ui/Card";
 import { useContext } from "react";
 import { AllBlogsContext } from "../../contexts/BlogsContext";
 import Pagination from "../../components/ui/Pagination";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export default function Index() {
     const { currentPosts, howManyPages, setCurrentPage } = useContext(AllBlogsContext);
+    const {theme} = useContext(ThemeContext);
 
     return (
         <>
@@ -18,7 +20,7 @@ export default function Index() {
                         <header className="flex flex-col items-center justify-center">
                             <h2 className="text-xl font-bold sm:text-4xl font-dm">Blogs Collections</h2>
 
-                            <p className="max-w-2xl mt-4 text-center text-disableText font-nunito">
+                            <p className={theme === 'bg-primaryBackground text-primaryContent' ? "max-w-2xl mt-4 text-center text-primaryContent/60 font-nunito" : "max-w-2xl mt-4 text-center text-primaryBackground/60 font-nunito"}>
                                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio nulla eligendi sunt velit, tenetur tempore eos sequi quod, omnis vitae voluptates officiis quis iure consectetur.
                             </p>
                         </header>

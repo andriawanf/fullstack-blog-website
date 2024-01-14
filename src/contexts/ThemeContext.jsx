@@ -11,7 +11,7 @@ export const ThemeContext = createContext();
 const getFromLocalStorage = () => {
     if (typeof window !== undefined){
         const value = localStorage.getItem("theme");
-        return value || 'bg-[#f5f5f4] text-[#0d0d0d]';
+        return value || 'bg-primaryBackground text-primaryContent';
     }
 };
 
@@ -21,7 +21,7 @@ export const ThemeContextProvider = ({children}) => {
     });
 
     const toggle = () => {
-        setTheme(theme === 'bg-[#f5f5f4] text-[#0d0d0d]' ? "bg-[#0d0d0d] text-[#f5f5f4] " : "bg-[#f5f5f4] text-[#0d0d0d]")
+        setTheme(theme === 'bg-primaryBackground text-primaryContent' ? "bg-primaryContent text-primaryBackground " : "bg-primaryBackground text-primaryContent")
     };
 
     useEffect(() => {
