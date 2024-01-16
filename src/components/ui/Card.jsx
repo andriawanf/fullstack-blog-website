@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
+import imageNotFound from '../../assets/images/norbert-kowalczyk-uEyejonvHoI-unsplash.jpg';
 
 
-function Card({ body, title }) {
+function Card({ body, title, image }) {
     return (
         <article className=" group">
             <img
                 alt="Lava"
-                src="https://images.unsplash.com/photo-1631451095765-2c91616fc9e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                src={image ? image : imageNotFound}
                 className="h-56 w-full rounded-xl object-cover shadow-xl transition group-hover:grayscale-[50%]"
             />
 

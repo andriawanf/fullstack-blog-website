@@ -25,8 +25,8 @@ function Featured() {
         const fetchPosts = async () => {
             setIsLoading(true);
             try {
-                const respones = await axios.get(`${import.meta.env.VITE_URL_API_JSONPLACEHOLDER}/posts`);
-                const sliceBlogs = respones.data.slice(0, 6);
+                const respones = await axios.get(`${import.meta.env.VITE_NEWSAPI_URL}/top-headlines?country=us&apiKey=${import.meta.env.VITE_NEWSAPI_KEY}`);
+                const sliceBlogs = respones.data.articles.slice(0, 6);
                 setBlogsSlider(sliceBlogs);
             } catch (error) {
                 console.log(error.message)
@@ -59,10 +59,10 @@ function Featured() {
                 </div>
                 <div className="p-4 border bg-foreground rounded-2xl border-border">
                     <div ref={sliderRef} className="keen-slider">
-                        {blogsSlider.map((blog) => {
+                        {blogsSlider.map((blog, index) => {
                             return (
-                                <div key={blog.id} className={theme === 'bg-primaryBackground text-primaryContent' ? "keen-slider__slide text-primaryContent" : "keen-slider__slide text-primaryContent"}>
-                                    <Card title={blog.title} body={blog.body} />
+                                <div key={index} className={theme === 'bg-primaryBackground text-primaryContent' ? "keen-slider__slide text-primaryContent" : "keen-slider__slide text-primaryContent"}>
+                                    <Card title={blog.title} body={blog.body} image={blog.urlToImage} />
                                 </div>
                             )
                         })}

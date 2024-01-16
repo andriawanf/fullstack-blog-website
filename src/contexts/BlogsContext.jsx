@@ -12,7 +12,7 @@ import Loader from "../components/ui/Loader";
 export const AllBlogsContext = createContext();
 
 export default function BlogsContext({ children }){
-    const BASE_URL = import.meta.env.VITE_URL_API_JSONPLACEHOLDER;
+    const BASE_URL = import.meta.env.VITE_NEWSAPI_URL;
 
     const [blogs, setBlogs] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -23,8 +23,8 @@ export default function BlogsContext({ children }){
         const fetchPosts = async () => {
             setIsLoading(true);
             try {
-                await axios.get(`${BASE_URL}/posts`)
-                    .then(data => setBlogs(data.data))
+                await axios.get(`${BASE_URL}/everything?q=tech&sortBy=popularity&apiKey=${import.meta.env.VITE_NEWSAPI_KEY}`)
+                    .then(data => setBlogs(data.data.articles))
             } catch (error) {
                 console.log(error.message)
             }
