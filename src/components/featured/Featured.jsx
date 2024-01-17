@@ -17,7 +17,7 @@ function Featured() {
     const [sliderRef] = useKeenSlider({
         slides: {
             perView: 2,
-            spacing: 5,
+            spacing: 15,
         },
     })
 
@@ -26,7 +26,7 @@ function Featured() {
             setIsLoading(true);
             try {
                 const respones = await axios.get(`${import.meta.env.VITE_NEWSAPI_URL}/top-headlines?country=us&apiKey=${import.meta.env.VITE_NEWSAPI_KEY}`);
-                const sliceBlogs = respones.data.articles.slice(0, 6);
+                const sliceBlogs = respones.data.articles.filter(item => item.urlToImage !== null).slice(0, 6);
                 setBlogsSlider(sliceBlogs);
             } catch (error) {
                 console.log(error.message)
@@ -62,7 +62,7 @@ function Featured() {
                         {blogsSlider.map((blog, index) => {
                             return (
                                 <div key={index} className={theme === 'bg-primaryBackground text-primaryContent' ? "keen-slider__slide text-primaryContent" : "keen-slider__slide text-primaryContent"}>
-                                    <Card title={blog.title} body={blog.body} image={blog.urlToImage} />
+                                    <Card title={blog.title} body={blog.description} image={blog.urlToImage} />
                                 </div>
                             )
                         })}

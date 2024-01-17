@@ -81,7 +81,7 @@ export default function Index() {
 
                         <ul className="grid gap-4 mt-4 sm:grid-cols-2 lg:grid-cols-3">
                             {currentPosts.map((post) => {
-                                return <Card body={post.body} title={post.title} key={post.id} image={post.urlToImage} />
+                                return <Card body={post.description} title={post.title} key={post.id} image={post.urlToImage} />
                             })}
                         </ul>
                         <div className="mt-10">
