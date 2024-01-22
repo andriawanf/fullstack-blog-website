@@ -9,17 +9,17 @@ import {PersistGate} from "redux-persist/integration/react"
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Auth0Provider
-    domain={import.meta.env.VITE_AUTH0_DOMAIN}
-    clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
-    authorizationParams={{
-      redirect_uri: window.location.origin
-    }}
-  >
+  // <Auth0Provider
+  //   domain={import.meta.env.VITE_AUTH0_DOMAIN}
+  //   clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
+  //   authorizationParams={{
+  //     redirect_uri: window.location.origin
+  //   }}
+  // >
+  // </Auth0Provider>
     <PersistGate persistor={persistor}>
       <Provider store={store}>
         <App />
       </Provider>
     </PersistGate>
-  </Auth0Provider>
 )
