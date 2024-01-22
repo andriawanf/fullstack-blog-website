@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AllBlogsContext } from "../../contexts/BlogsContext";
 import Pagination from "../../components/ui/Pagination";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { format } from 'date-fns';
 
 export default function Index() {
     const { currentPosts, howManyPages, setCurrentPage } = useContext(AllBlogsContext);
@@ -81,7 +82,7 @@ export default function Index() {
 
                         <ul className="grid gap-4 mt-4 sm:grid-cols-2 lg:grid-cols-3">
                             {currentPosts.map((post) => {
-                                return <Card body={post.description} title={post.title} key={post.id} image={post.urlToImage} />
+                                return <Card body={post.description} title={post.title} key={post.id} image={post.urlToImage} publishedAt={format(new Date(post.publishedAt), "do MMM yyyy")} />
                             })}
                         </ul>
                         <div className="mt-10">

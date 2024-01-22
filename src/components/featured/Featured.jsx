@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import Loader from "../ui/Loader";
+import { format } from 'date-fns';
 
 function Featured() {
     const {theme} = useContext(ThemeContext)
@@ -25,7 +26,7 @@ function Featured() {
         const fetchPosts = async () => {
             setIsLoading(true);
             try {
-                const respones = await axios.get(`${import.meta.env.VITE_NEWSAPI_URL}/top-headlines?country=us&apiKey=${import.meta.env.VITE_NEWSAPI_KEY}`);
+                const respones = await axios.get(`${import.meta.env.VITE_NEWSAPI_URL}/top-headlines?country=us&sortBy=publishedAt&apiKey=${import.meta.env.VITE_NEWSAPI_KEY}`);
                 const sliceBlogs = respones.data.articles.filter(item => item.urlToImage !== null).slice(0, 6);
                 setBlogsSlider(sliceBlogs);
             } catch (error) {
@@ -39,6 +40,7 @@ function Featured() {
     if (isLoading) {
         return <Loader />;
     }
+
 
 
     return (
@@ -62,7 +64,7 @@ function Featured() {
                         {blogsSlider.map((blog, index) => {
                             return (
                                 <div key={index} className={theme === 'bg-primaryBackground text-primaryContent' ? "keen-slider__slide text-primaryContent" : "keen-slider__slide text-primaryContent"}>
-                                    <Card title={blog.title} body={blog.description} image={blog.urlToImage} />
+                                    <Card title={blog.title} body={blog.description} image={blog.urlToImage} publishedAt={format(new Date(blog.publishedAt), "do MMM yyyy")} />
                                 </div>
                             )
                         })}

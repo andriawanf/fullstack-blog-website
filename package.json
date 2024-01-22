@@ -22,6 +22,7 @@
     "@tiptap/react": "^2.1.15",
     "@tiptap/starter-kit": "^2.1.15",
     "axios": "^1.6.5",
+    "date-fns": "^3.2.0",
     "dotenv": "^16.3.1",
     "keen-slider": "^6.8.6",
     "lowlight": "^3.1.0",

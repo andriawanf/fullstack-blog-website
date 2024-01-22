@@ -41,6 +41,9 @@ dependencies:
   axios:
     specifier: ^1.6.5
     version: 1.6.5
+  date-fns:
+    specifier: ^3.2.0
+    version: 3.2.0
   dotenv:
     specifier: ^16.3.1
     version: 16.3.1
@@ -1545,6 +1548,10 @@ packages:
 
   /dash-get@1.0.2:
     resolution: {integrity: sha512-4FbVrHDwfOASx7uQVxeiCTo7ggSdYZbqs8lH+WU6ViypPlDbe9y6IP5VVUDQBv9DcnyaiPT5XT0UWHgJ64zLeQ==}
+    dev: false
+
+  /date-fns@3.2.0:
+    resolution: {integrity: sha512-E4KWKavANzeuusPi0jUjpuI22SURAznGkx7eZV+4i6x2A+IZxAMcajgkvuDAU1bg40+xuhW1zRdVIIM/4khuIg==}
     dev: false
 
   /debug@4.3.4:

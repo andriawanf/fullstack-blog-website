@@ -1,14 +1,10 @@
 /* eslint-disable no-unused-vars */
-import { useEffect } from "react";
 import Button from "../ui/Button";
 import Card from "../ui/Card";
-import Categories from "../ui/Categories";
-import axios from "axios";
-import { useState } from "react";
-import Pagination from "../ui/Pagination";
 import { useContext } from "react";
 import { AllBlogsContext } from "../../contexts/BlogsContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { format } from 'date-fns';
 
 function AllBlogs() {
     const {currentPosts} = useContext(AllBlogsContext);
@@ -26,8 +22,8 @@ function AllBlogs() {
                 </div>
             </div>
             <div className="grid max-w-2xl grid-cols-1 mx-auto mt-10 border-t gap-x-5 gap-y-5 sm:mt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                {currentPosts.map((post) => {
-                    return <Card body={post.description} title={post.title} key={post.id} image={post.urlToImage}/>
+                {currentPosts.map((post, index) => {
+                    return <Card body={post.description} title={post.title} key={index} image={post.urlToImage} publishedAt={format(new Date(post.publishedAt), "do MMM yyyy")}/>
                 })}
             </div>
         </section>

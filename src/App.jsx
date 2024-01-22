@@ -9,6 +9,8 @@ import HomePage from "./pages/HomePage";
 import WriteBlog from "./pages/writeBlog/WriteBlog";
 import BlogsContext  from "./contexts/BlogsContext.jsx";
 import PageNotFound404 from "./components/PageNotFound404"
+import SignIn from "./pages/SignIn";
+import Signup from "./pages/Signup";
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
             <Router>
               <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="/signup" element={<Signup />} />
                 <Route path="/blog" element={<Index />} />
                 <Route path="/blog/write" element={<WriteBlog />} />
                 <Route path="*" element={<PageNotFound404 />} />
