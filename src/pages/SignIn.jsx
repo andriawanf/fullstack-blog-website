@@ -1,9 +1,43 @@
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../layouts/Navbar";
 import PageContainer from "../layouts/PageContainer";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
+import { signInStart, signInSuccess, signInFailure } from "../redux/user/userSlice";
 
 
 function SignIn() {
+    const [formData, setFormData] = useState({});
+    const {loading, error: errorMessage} = useSelector(state => state.user);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!formData.email || !formData.password) {
+            return dispatch(signInFailure("Please fill out all fields."));
+        }
+        try {
+            dispatch(signInStart());
+            const res = await axios.post("/api/auth/signin", formData);
+            if(res.status !== 200){
+                dispatch(signInFailure(res.message));
+            }
+            // setLoading(false)
+            if (res.status === 200) {
+                dispatch(signInSuccess(res));
+                navigate('/');  
+            }
+        } catch (error) {
+            dispatch(signInFailure(error.message));
+        }
+    }
     return (
         <PageContainer>
             <Navbar />
@@ -19,24 +53,31 @@ function SignIn() {
                                     Create a free account
                                 </Link>
                             </p>
-                            <form action="#" method="POST" className="mt-8">
+                            <form className="mt-8" onSubmit={handleSubmit}>
                                 <div className="space-y-5">
+                                    {errorMessage && (
+                                        <div>
+                                            <p className="flex items-center w-full h-10 p-3 text-sm font-medium font-nunito text-error bg-error/15 rounded-xl">{errorMessage}</p>
+                                        </div>
+                                    )}
                                     <div>
-                                        <label htmlFor="" className="text-base font-medium font-dm">
+                                        <label htmlFor="email" className="text-base font-medium font-dm">
                                             {' '}
                                             Email address{' '}
                                         </label>
                                         <div className="mt-2">
                                             <input
+                                                id="email"
                                                 className="flex w-full h-10 px-3 py-2 text-sm bg-transparent border border-gray-300 rounded-xl placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 font-nunito"
                                                 type="email"
                                                 placeholder="Email"
+                                                onChange={handleChange}
                                             ></input>
                                         </div>
                                     </div>
                                     <div>
                                         <div className="flex items-center justify-between">
-                                            <label htmlFor="" className="text-base font-medium font-dm">
+                                            <label htmlFor="password" className="text-base font-medium font-dm">
                                                 {' '}
                                                 Password{' '}
                                             </label>
@@ -51,26 +92,38 @@ function SignIn() {
                                         </div>
                                         <div className="mt-2">
                                             <input
+                                                id="password"
                                                 className="flex w-full h-10 px-3 py-2 text-sm bg-transparent border border-gray-300 rounded-xl placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 font-nunito"
                                                 type="password"
-                                                placeholder="Password"
+                                                placeholder="***************"
+                                                onChange={handleChange}
                                             ></input>
                                         </div>
                                     </div>
                                     <div>
                                         <button
-                                            type="button"
+                                            type="submit"
                                             className="inline-flex w-full items-center justify-center rounded-xl bg-primary px-3.5 py-2.5 font-semibold leading-7  hover:bg-primaryLight focus:bg-primaryDark font-nunito"
+                                            disabled={loading}
                                         >
-                                            Sign In<i className="ml-2 ri-arrow-right-line" />
+                                            {
+                                                loading ? (
+                                                    "Loading..."
+                                                ) : "Sign in"
+                                            }
                                         </button>
                                     </div>
                                 </div>
                             </form>
-                            <div className="mt-3 space-y-3">
+                            <span className="flex items-center py-6">
+                                <span className="flex-1 h-px bg-secondaryContent/30"></span>
+                                <span className="px-6 font-medium shrink-0 text-md font-nunito text-secondaryContent/50">Or</span>
+                                <span className="flex-1 h-px bg-secondaryContent/30"></span>
+                            </span>
+                            <div className="space-y-3">
                                 <button
                                     type="button"
-                                    className="relative inline-flex w-full items-center justify-center rounded-xl border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
+                                    className="relative inline-flex w-full items-center justify-center rounded-xl border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none font-nunito"
                                 >
                                     <span className="inline-block mr-2">
                                         <svg
@@ -86,7 +139,7 @@ function SignIn() {
                                 </button>
                                 <button
                                     type="button"
-                                    className="relative inline-flex w-full items-center justify-center rounded-xl border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
+                                    className="relative inline-flex w-full items-center justify-center rounded-xl border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none font-nunito"
                                 >
                                     <span className="inline-block mr-2">
                                         <svg
