@@ -5,27 +5,26 @@ import { useSelector } from "react-redux";
 
 function AuthLinks() {
     const {currentUser} = useSelector(state => state.user)
-    console.log(currentUser)
     const { theme } = useContext(ThemeContext);
 
     return (
         <>
             {currentUser ? (
                 <>
-                    <Link to="blog/write" className="">Write</Link>
+                    <Link to="blog/write" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-primaryContent hover:text-primaryBackground">Write</Link>
                     <button
-                        className="relative inline-flex items-center px-8 py-3 overflow-hidden text-primaryContent rounded-xl group focus:outline-none focus:ring bg-primary"
+                        className="relative inline-flex items-center px-3 py-2 overflow-hidden rounded-md text-primaryContent group focus:outline-none focus:ring bg-primary"
                     >
-                        <i className="absolute transition-all ri-logout-box-line -end-full group-hover:end-4"></i>
-                        <span className="text-sm font-medium transition-all font-nunito group-hover:me-4"> Logout </span>
+                        <i className="absolute transition-all ri-logout-box-line -end-full group-hover:end-2"></i>
+                        <span className="text-sm font-medium transition-all font-nunito group-hover:me-4"> Sign up </span>
                     </button>
                 </>
             ) : (
                 <Link to="/signin">
                     <button
-                        className={theme === 'bg-primaryBackground text-primaryContent' ? "relative inline-flex items-center px-8 py-3 overflow-hidden text-primaryContent rounded-xl group focus:outline-none focus:ring bg-primary" : "relative inline-flex items-center px-8 py-3 overflow-hidden text-primaryContent rounded-xl group focus:outline-none focus:ring bg-primary"}
+                        className={theme === 'bg-primaryBackground text-primaryContent' ? "relative inline-flex items-center px-3 py-2 overflow-hidden text-primaryContent rounded-md group focus:outline-none focus:ring bg-primary" : "relative inline-flex items-center px-3 py-2 overflow-hidden text-primaryContent rounded-md group focus:outline-none focus:ring bg-primary"}
                     >
-                        <i className="absolute transition-all ri-login-box-line -end-full group-hover:end-4"></i>
+                        <i className="absolute transition-all ri-login-box-line -end-full group-hover:end-2"></i>
                         <span className="text-sm font-medium transition-all font-nunito group-hover:me-4"> Login </span>
                     </button>
                 </Link>

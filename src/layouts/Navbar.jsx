@@ -1,11 +1,43 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import AuthLinks from "../features/authLinks/AuthLinks";
 import ThemeToggle from "../features/themeToggle/ThemeToggle";
 import { Link } from "react-router-dom";
+import { Menu, Transition } from '@headlessui/react';
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { signOutSuccess } from "../redux/user/userSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
+
+const navigation = [
+    { name: 'Dashboard', to: '/', current: true },
+    { name: 'Blogs', to: '/blog', current: false },
+    { name: 'About us', to: '#', current: false },
+    { name: 'Contact us', to: '#', current: false },
+]
+
+function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+}
 
 function Navbar() {
+    const { currentUser } = useSelector(state => state.user);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [open, setOpen] = useState(false);
+
+    const handleSignOut = async () => {
+        try {
+            const res = await axios.post("/api/user/signout");
+            if(res.status === 200){
+                dispatch(signOutSuccess());
+                navigate("/signin")
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
 
     return (
         <nav className="relative z-50 flex items-center justify-between w-full h-20">
@@ -37,15 +69,83 @@ function Navbar() {
                     </svg>
 
                 </div>
-                <h1 className="text-xl font-bold font-dm">OutOfTheBoys!</h1>
+                <h1 className="text-lg font-bold font-dm">OutOfTheBoys!</h1>
             </div>
-            <div className="items-center hidden gap-8 font-medium xl:flex font-dm lg:gap-5">
+            <div className="items-center hidden gap-8 font-medium xl:flex font-dm lg:gap-4">
+                {navigation.map((item) => (
+                    <Link
+                        key={item.name}
+                        to={item.to}
+                        className={classNames(
+                            item.current ? 'bg-primaryContent text-primaryBackground' : ' hover:bg-primaryContent hover:text-primaryBackground',
+                            'rounded-md px-3 py-2 text-sm font-medium'
+                        )}
+                        aria-current={item.current ? 'page' : undefined}
+                    >
+                        {item.name}
+                    </Link>
+                ))}
                 <ThemeToggle />
-                <Link to="/" className="relative">Home</Link>
-                <Link to="blog" >Blogs</Link>
-                <a href="#all-blogs" >About</a>
-                <a href="/" >Contact</a>
-                <AuthLinks />
+                {currentUser ? (
+                    <div className="">
+                        {/* Profile dropdown */}
+                        <Menu as="div" className="relative ml-3">
+                            <div>
+                                <Menu.Button className="relative flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                    <span className="absolute -inset-1.5" />
+                                    <span className="sr-only">Open user menu</span>
+                                    <img
+                                        className="w-8 h-8 rounded-full"
+                                        src={currentUser.data.profilePicture}
+                                        alt=""
+                                    />
+                                </Menu.Button>
+                            </div>
+                            <Transition
+                                as={Fragment}
+                                enter="transition ease-out duration-100"
+                                enterFrom="transform opacity-0 scale-95"
+                                enterTo="transform opacity-100 scale-100"
+                                leave="transition ease-in duration-75"
+                                leaveFrom="transform opacity-100 scale-100"
+                                leaveTo="transform opacity-0 scale-95"
+                            >
+                                <Menu.Items className="absolute right-0 z-10 px-1 py-1 mt-2 origin-top-right rounded-md shadow-lg w-65 bg-primaryBackground ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                    <Menu.Item>
+                                        {({ active }) => (
+                                            <a
+                                                href="#"
+                                                className={classNames(active ? 'bg-primary/20 rounded-md' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                            >
+                                                {currentUser.data.email}
+                                            </a>
+                                        )}
+                                    </Menu.Item>
+                                    <Menu.Item>
+                                        {({ active }) => (
+                                            <a
+                                                href="#"
+                                                className={classNames(active ? 'bg-primary/20 rounded-md' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                            >
+                                                Settings
+                                            </a>
+                                        )}
+                                    </Menu.Item>
+                                    <Menu.Item>
+                                        {({ active }) => (
+                                            <p
+                                                className={classNames(active ? 'bg-error rounded-md text-primaryBackground' : 'text-error', 'block px-4 py-2 text-sm cursor-pointer')}
+                                                onClick={handleSignOut}
+                                            >
+                                                Sign out
+                                            </p>
+                                        )}
+                                    </Menu.Item>
+                                </Menu.Items>
+                            </Transition>
+                        </Menu>
+                    </div>
+                ): (<AuthLinks />)}
             </div>
             <div className="flex xl:hidden">
                 <i className="text-black cursor-pointer ri-menu-4-fill ri-2x" onClick={() => setOpen(!open)}></i>
