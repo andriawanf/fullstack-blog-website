@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { useState, Fragment, useContext } from "react";
 import AuthLinks from "../features/authLinks/AuthLinks";
 import ThemeToggle from "../features/themeToggle/ThemeToggle";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import axios from "axios";
 import { signOutSuccess } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import { ThemeContext } from "../contexts/ThemeContext";
 
 const navigation = [
     { name: 'Dashboard', to: '/', current: true },
@@ -25,6 +25,7 @@ function Navbar() {
     const { currentUser } = useSelector(state => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const {theme} = useContext(ThemeContext);
     const [open, setOpen] = useState(false);
 
     const handleSignOut = async () => {
@@ -76,10 +77,12 @@ function Navbar() {
                     <Link
                         key={item.name}
                         to={item.to}
-                        className={classNames(
+                        className={theme === 'bg-primaryBackground text-primaryContent' ? classNames(
                             item.current ? 'bg-primaryContent text-primaryBackground' : ' hover:bg-primaryContent hover:text-primaryBackground',
                             'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
+                        ) : classNames(
+                            item.current ? 'bg-primaryBackground text-primaryContent' : ' hover:bg-primaryBackground hover:text-primaryContent',
+                            'rounded-md px-3 py-2 text-sm font-medium')}
                         aria-current={item.current ? 'page' : undefined}
                     >
                         {item.name}

@@ -27,9 +27,9 @@ export default function Index() {
                         </header>
 
                         <div className="flex items-center justify-between mt-8">
-                            <div className="flex border border-gray-100 rounded">
+                            <div className={theme === 'bg-primaryBackground text-primaryContent' ? "flex border rounded border-primaryContent/10" : "flex border rounded border-primaryBackground/20"}>
                                 <button
-                                    className="inline-flex items-center justify-center w-10 h-10 text-gray-600 transition border-e hover:bg-gray-50 hover:text-gray-700"
+                                    className={theme === 'bg-primaryBackground text-primaryContent' ? "inline-flex items-center justify-center w-10 h-10 transition rounded text-primaryContent border-e border-primaryContent/10 hover:bg-foreground hover:text-primaryContent" : "inline-flex items-center justify-center w-10 h-10 transition rounded text-primaryBackground border-e border-primaryBackground/10 hover:bg-foreground hover:text-primaryContent"}
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ export default function Index() {
                                 </button>
 
                                 <button
-                                    className="inline-flex items-center justify-center w-10 h-10 text-gray-600 transition hover:bg-gray-50 hover:text-gray-700"
+                                    className={theme === 'bg-primaryBackground text-primaryContent' ? "inline-flex items-center justify-center w-10 h-10 transition rounded text-primaryContent border-e border-primaryContent/10 hover:bg-foreground hover:text-primaryContent" : "inline-flex items-center justify-center w-10 h-10 transition rounded text-primaryBackground border-e border-primaryBackground/10 hover:bg-foreground hover:text-primaryContent"}
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +70,7 @@ export default function Index() {
                             <div>
                                 <label htmlFor="SortBy" className="sr-only">SortBy</label>
 
-                                <select id="SortBy" className="h-10 text-sm border-gray-300 rounded">
+                                <select id="SortBy" className="h-10 px-2 text-sm border-gray-300 rounded font-nunito text-primaryContent">
                                     <option>Sort By</option>
                                     <option value="Title, DESC">Title, DESC</option>
                                     <option value="Title, ASC">Title, ASC</option>

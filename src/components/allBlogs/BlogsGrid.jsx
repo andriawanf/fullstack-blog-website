@@ -28,7 +28,7 @@ function BlogsGrid() {
                             <h4 className="mb-5 text-3xl font-semibold font-dm">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                             </h4>
-                            <p className="max-w-xl text-lg text-primaryContent/60 font-nunito">
+                            <p className={theme === 'bg-primaryBackground text-primaryContent' ? "max-w-xl text-lg text-primaryContent/60 font-nunito" : "max-w-xl text-lg text-primaryBackground/60 font-nunito"}>
                                 Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
                                 officia consequat duis enim velit mollit xercitation veniam consequat sunt
                                 nostrud amet.
@@ -43,7 +43,7 @@ function BlogsGrid() {
                                 alt=""
                             />
                             <div className="pt-2 my-4 md:ml-6 md:mt-0">
-                                <span className="block mb-2 text-primaryContent/60 font-nunito">Jul 20, 2022</span>
+                                <span className={theme === 'bg-primaryBackground text-primaryContent' ? "block mb-2 text-primaryContent/60 font-nunito" : "block mb-2 text-primaryBackground/60 font-nunito"}>Jul 20, 2022</span>
                                 <h4 className="text-xl font-semibold font-dm">
                                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                                 </h4>
@@ -56,7 +56,7 @@ function BlogsGrid() {
                                 alt=""
                             />
                             <div className="pt-2 my-4 md:ml-6 md:mt-0">
-                                <span className="block mb-2 text-primaryContent/60 font-nunito">Jul 20, 2022</span>
+                                <span className={theme === 'bg-primaryBackground text-primaryContent' ? "block mb-2 text-primaryContent/60 font-nunito" : "block mb-2 text-primaryBackground/60 font-nunito"}>Jul 20, 2022</span>
                                 <h4 className="text-xl font-semibold font-dm">
                                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                                 </h4>
@@ -69,7 +69,7 @@ function BlogsGrid() {
                                 alt=""
                             />
                             <div className="pt-2 my-4 md:ml-6 md:mt-0">
-                                <span className="block mb-2 text-primaryContent/60 font-nunito">Jul 20, 2022</span>
+                                <span className={theme === 'bg-primaryBackground text-primaryContent' ? "block mb-2 text-primaryContent/60 font-nunito" : "block mb-2 text-primaryBackground/60 font-nunito"}>Jul 20, 2022</span>
                                 <h4 className="text-xl font-semibold font-dm">
                                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                                 </h4>

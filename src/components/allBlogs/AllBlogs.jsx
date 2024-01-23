@@ -21,7 +21,7 @@ function AllBlogs() {
                     <Button title="Explore more" icon="ri-arrow-right-line" bgColor={"bg-border"}/>
                 </div>
             </div>
-            <div className="grid max-w-2xl grid-cols-1 mx-auto mt-10 border-t gap-x-5 gap-y-5 sm:mt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            <div className="grid max-w-2xl grid-cols-1 mx-auto mt-10 gap-x-5 gap-y-5 sm:mt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                 {currentPosts.map((post, index) => {
                     return <Card body={post.description} title={post.title} key={index} image={post.urlToImage} publishedAt={format(new Date(post.publishedAt), "do MMM yyyy")}/>
                 })}

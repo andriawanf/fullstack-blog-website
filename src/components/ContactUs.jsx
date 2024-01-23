@@ -1,15 +1,19 @@
+import { ThemeContext } from "../contexts/ThemeContext"
+import { useContext } from "react"
+
 
 function ContactUs() {
+    const {theme} = useContext(ThemeContext);
     return (
-        <div className="px-10 py-10 border shadow-lg shadow-border border-border bg-foreground rounded-3xl">
+        <div className={theme === 'bg-primaryBackground text-primaryContent' ? "px-10 py-10 border shadow-lg shadow-border border-border bg-foreground rounded-3xl" : "px-10 py-10 border shadow-lg  border-border bg-foreground rounded-3xl"}>
             {/* Hero Map */}
             <div className="flex flex-col space-y-8 ">
-                <div className="mx-auto inline-flex rounded-full px-4 py-1.5 border-border max-w-max bg-gray-100">
-                    <p className="text-xs font-semibold leading-normal text-center md:text-sm font-nunito">
+                <div className="mx-auto inline-flex rounded-full px-4 py-1.5 border-border max-w-max bg-primary/20">
+                    <p className="text-xs font-semibold leading-normal text-center md:text-sm font-nunito text-primary">
                         Share your thoughts
                     </p>
                 </div>
-                <p className="mt-6 text-3xl font-bold leading-tight text-center font-dm sm:text-4xl lg:text-5xl">
+                <p className={theme === 'bg-primaryBackground text-primaryContent' ? "mt-6 text-3xl font-bold leading-tight text-center font-dm sm:text-4xl lg:text-5xl" : "mt-6 text-3xl font-bold leading-tight text-center font-dm sm:text-4xl lg:text-5xl text-primaryContent"}>
                     Love to hear from you
                 </p>
                 <p className="max-w-4xl mx-auto text-base text-center text-primaryContent/60 md:text-xl font-nunito">
@@ -22,7 +26,7 @@ function ContactUs() {
                     {/* contact from */}
                     <div className="flex items-center justify-center">
                         <div className="px-2 md:px-12">
-                            <p className="mt-6 text-3xl font-bold leading-tight text-start font-dm sm:text-4xl lg:text-5xl">Get in touch</p>
+                            <p className="mt-6 text-3xl font-bold leading-tight text-start font-dm sm:text-4xl lg:text-5xl text-primaryContent">Get in touch</p>
                             <p className="mt-4 text-lg text-primaryContent/60 font-nunito">
                                 Our friendly team would love to hear from you.
                             </p>

@@ -2,8 +2,11 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from "react";
 import { useState } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 function Pagination({ pages = 6, setCurrentPage }) {
+    const {theme} = useContext(ThemeContext);
     // set number of pages
     const numberOfPage = [];
     for (let i = 1; i <= pages; i++) {
@@ -61,7 +64,7 @@ function Pagination({ pages = 6, setCurrentPage }) {
             <li className="group">
                 <a
                     href="#"
-                    className={`${currentButton === 1 ? "inline-flex items-center justify-center w-10 h-10 text-gray-900 border border-disableText/20 rounded-xl bg-disableText/20 rtl:rotate-180 group-hover:bg-black group-hover:text-white cursor-not-allowed" : "inline-flex items-center justify-center w-10 h-10 text-gray-900 border border-disableText/20 rounded-xl bg-disableText/20 rtl:rotate-180 group-hover:bg-black group-hover:text-white cursor-pointer"}`}
+                    className={theme === 'bg-primaryBackground text-primaryContent' ? `${currentButton === 1 ? "inline-flex items-center justify-center w-10 h-10 text-gray-900 border border-disableText/20 rounded-xl bg-disableText/20 rtl:rotate-180 group-hover:bg-black group-hover:text-white cursor-not-allowed" : "inline-flex items-center justify-center w-10 h-10 text-gray-900 border border-disableText/20 rounded-xl bg-disableText/20 rtl:rotate-180 group-hover:bg-black group-hover:text-white cursor-pointer"}` : `${currentButton === 1 ? "inline-flex items-center justify-center w-10 h-10 text-primaryBackground border border-foreground/20 rounded-xl bg-foreground/10 rtl:rotate-180 group-hover:bg-primaryContent group-hover:text-primaryContent cursor-not-allowed" : "inline-flex items-center justify-center w-10 h-10 text-primaryBackgorund border border-foreground/10 rounded-xl bg-foreground/10 rtl:rotate-180 group-hover:bg-primaryContent group-hover:text-primaryBackground cursor-pointer"}`}
                     onClick={() => setCurrentButton((prev) => prev <= 1 ? prev : prev - 1)}
                 >
                     <span className="sr-only">Prev Page</span>
@@ -96,7 +99,7 @@ function Pagination({ pages = 6, setCurrentPage }) {
             <li className="group">
                 <a
                     href="#"
-                    className={`${currentButton === numberOfPage.length ? "inline-flex items-center justify-center w-10 h-10 text-gray-900 border border-disableText/20 rounded-xl bg-disableText/20 rtl:rotate-180 group-hover:bg-black group-hover:text-white cursor-not-allowed" : "inline-flex items-center justify-center w-10 h-10 text-gray-900 border border-disableText/20 rounded-xl bg-disableText/20 rtl:rotate-180 group-hover:bg-black group-hover:text-white cursor-pointer"}`}
+                    className={theme === 'bg-primaryBackground text-primaryContent' ? `${currentButton === numberOfPage.length ? "inline-flex items-center justify-center w-10 h-10 text-gray-900 border border-disableText/20 rounded-xl bg-disableText/20 rtl:rotate-180 group-hover:bg-black group-hover:text-white cursor-not-allowed" : "inline-flex items-center justify-center w-10 h-10 text-gray-900 border border-disableText/20 rounded-xl bg-disableText/20 rtl:rotate-180 group-hover:bg-black group-hover:text-white cursor-pointer"}` : `${currentButton === numberOfPage.length ? "inline-flex items-center justify-center w-10 h-10 text-primaryBackground border border-foreground/20 rounded-xl bg-foreground/10 rtl:rotate-180 group-hover:bg-primaryContent group-hover:text-primaryContent cursor-not-allowed" : "inline-flex items-center justify-center w-10 h-10 text-primaryBackgorund border border-foreground/10 rounded-xl bg-foreground/10 rtl:rotate-180 group-hover:bg-primaryContent group-hover:text-primaryBackground cursor-pointer"}`}
                     onClick={() => setCurrentButton((prev) => prev >= numberOfPage.length ? prev : prev + 1)}
                 >
                     <span className="sr-only">Next Page</span>
