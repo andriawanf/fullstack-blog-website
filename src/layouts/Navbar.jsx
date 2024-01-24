@@ -138,6 +138,16 @@ function Navbar() {
                                     </Menu.Item>
                                     <Menu.Item>
                                         {({ active }) => (
+                                            <Link
+                                                to="/blog/write"
+                                                className={classNames(active ? 'bg-primary/20 rounded-md' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                            >
+                                                Write blog
+                                            </Link>
+                                        )}
+                                    </Menu.Item>
+                                    <Menu.Item>
+                                        {({ active }) => (
                                             <p
                                                 className={classNames(active ? 'bg-error rounded-md text-primaryBackground' : 'text-error', 'block px-4 py-2 text-sm cursor-pointer')}
                                                 onClick={handleSignOut}
