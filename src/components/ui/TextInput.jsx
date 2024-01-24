@@ -1,6 +1,6 @@
 import React from 'react'
 
-function TextInput({ htmlFor, type, id, placeholder, title }) {
+function TextInput({ htmlFor, type, id, placeholder, title, action }) {
     return (
         <div className="flex-1 w-full md:w-1/3">
             <label
@@ -14,6 +14,7 @@ function TextInput({ htmlFor, type, id, placeholder, title }) {
                 type={type}
                 placeholder={placeholder}
                 id={id}
+                onChange={action}
             ></input>
         </div>
     )
