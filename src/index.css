@@ -2,3 +2,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+    height: 100vh;
+}
+
+.ql-editor{
+    font-family: "DM Sans";
+    font-weight: 400;
+    font-size: 1.05rem;
+}

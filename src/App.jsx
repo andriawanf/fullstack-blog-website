@@ -15,7 +15,7 @@ import Signup from "./pages/Signup";
 function App() {
 
   return (
-    <main className="w-screen h-full overflow-hidden">
+    <main className="w-full h-full overflow-hidden">
       <ThemeContextProvider>
         <ThemeProvider>
           <BlogsContext>
