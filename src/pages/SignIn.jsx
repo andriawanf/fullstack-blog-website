@@ -3,13 +3,13 @@ import Navbar from "../layouts/Navbar";
 import PageContainer from "../layouts/PageContainer";
 import { useState } from "react";
 import axios from "axios";
-import {useDispatch, useSelector} from "react-redux";
-import { signInStart, signInSuccess, signInFailure } from "../redux/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { signInStart, signInSuccess, signInFailure, errorHide } from "../redux/user/userSlice";
 
 
 function SignIn() {
     const [formData, setFormData] = useState({});
-    const {loading, error: errorMessage} = useSelector(state => state.user);
+    const { loading, error: errorMessage } = useSelector(state => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -21,18 +21,22 @@ function SignIn() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!formData.email || !formData.password) {
-            return dispatch(signInFailure("Please fill out all fields."));
+            dispatch(signInFailure("Please fill out all fields."));
+            setTimeout(() => {
+                dispatch(errorHide());
+            }, 3000);
+            return;
         }
         try {
             dispatch(signInStart());
             const res = await axios.post("/api/auth/signin", formData);
-            if(res.status !== 200){
+            if (!res.statusText !== "OK") {
                 dispatch(signInFailure(res.message));
             }
             // setLoading(false)
-            if (res.status === 200) {
+            if (res.status = 200) {
                 dispatch(signInSuccess(res));
-                navigate('/');  
+                navigate('/');
             }
         } catch (error) {
             dispatch(signInFailure(error.message));
