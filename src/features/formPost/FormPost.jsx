@@ -82,8 +82,9 @@ export default function FormPost() {
 
     const categoryOptions = [
         { value: "Technology", label: "Technology" },
+        { value: "Education", label: "Education" },
         { value: "Sport", label: "Sport" },
-        { value: "Business", label: "Business" }
+        { value: "Business", label: "Business" },
     ];
     return (
         <div>
