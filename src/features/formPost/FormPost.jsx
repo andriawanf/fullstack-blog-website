@@ -11,7 +11,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
-export default function Editor() {
+export default function FormPost() {
     const [value, setValue] = useState('');
     const [imageFile, setImageFile] = useState(null);
     const [imageUploadProgress, setImageUploadProgress] = useState(null);
@@ -76,7 +76,7 @@ export default function Editor() {
                 navigate(`/`);
             }
         } catch (error) {
-            return  setPublishError('Something went wrong');
+            return setPublishError('Something went wrong');
         }
     }
 
@@ -96,7 +96,7 @@ export default function Editor() {
                     <label htmlFor="cover-photo" className="font-semibold leading-none text-md font-dm peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                         <span>Cover image</span>{imageUploadError && <span className="pl-2 text-sm text-error">*{imageUploadError}</span>}
                     </label>
-                    <div className="flex flex-col items-center justify-between gap-4 p-3 border border-dashed rounded-md border-primaryContent/40 mt-1.5">
+                    <div className="flex flex-col items-center justify-between gap-4 p-3 border-2 border-dashed rounded-md border-primaryContent/30 mt-1.5 bg-foreground">
                         <div className="flex justify-center w-full mt-2 border border-dashed rounded-lg border-gray-900/25">
                             {
                                 formData.imageContent ? (
@@ -137,7 +137,18 @@ export default function Editor() {
                         </button>
                     </div>
                 </div>
-                <ReactQuill theme="snow" placeholder="Write your blog here..." className="mb-12 h-72 font-nunito" required onChange={(value) => { setFormData({ ...formData, content: value }) }} />
+                <div>
+                    <label htmlFor="OrderNotes" className="font-semibold leading-none text-md font-dm peer-disabled:cursor-not-allowed peer-disabled:opacity-70"> Description </label>
+
+                    <textarea
+                        id="description"
+                        className="w-full px-3 py-2 mt-1.5 text-sm font-medium border rounded-md bg-foreground border-black/30 placeholder:text-primaryContent/60 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 font-nunito"
+                        rows="5"
+                        placeholder="Enter any description about your blog..."
+                        onChange={(e) =>setFormData({...formData, description: e.target.value}) }
+                    ></textarea>
+                </div>
+                <ReactQuill theme="snow" placeholder="Write your blog here..." className="mb-12 h-72 font-nunito bg-foreground" required onChange={(value) => { setFormData({ ...formData, content: value }) }} />
                 <Button title="Submit" bgColor="bg-primary" size="w-full" type="submit" />
             </form>
         </div>
