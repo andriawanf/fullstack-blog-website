@@ -126,6 +126,18 @@ function Navbar() {
                                             </a>
                                         )}
                                     </Menu.Item>
+                                    {currentUser.data.isAdmin && (
+                                        <Menu.Item>
+                                            {({ active }) => (
+                                                <Link
+                                                    to="/blog/write"
+                                                    className={classNames(active ? 'bg-primary/20 rounded-md' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                >
+                                                    Write blog
+                                                </Link>
+                                            )}
+                                        </Menu.Item>
+                                    )}
                                     <Menu.Item>
                                         {({ active }) => (
                                             <a
@@ -134,16 +146,6 @@ function Navbar() {
                                             >
                                                 Settings
                                             </a>
-                                        )}
-                                    </Menu.Item>
-                                    <Menu.Item>
-                                        {({ active }) => (
-                                            <Link
-                                                to="/blog/write"
-                                                className={classNames(active ? 'bg-primary/20 rounded-md' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                            >
-                                                Write blog
-                                            </Link>
                                         )}
                                     </Menu.Item>
                                     <Menu.Item>
