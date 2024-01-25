@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
+import Card from '../components/ui/Card';
+import { format } from 'date-fns';
 
 function BlogPage() {
     const { blogSlug } = useParams();
@@ -104,10 +106,15 @@ function BlogPage() {
                     </div>
                 </div>
                 <div className='flex flex-col items-center justify-center mb-5'>
-                    <h1 className='mt-5 text-xl'>Recent articles</h1>
-                    <div className='flex flex-wrap justify-center gap-5 mt-5'>
-                        {/* {recentPosts &&
-                            recentPosts.map((post) => <PostCard key={post._id} post={post} />)} */}
+                    <h1 className='mt-5 text-xl font-semibold font-dm'>Recent articles</h1>
+                    <div className="grid gap-4 mt-5 sm:grid-cols-2 lg:grid-cols-3">
+                        {recentPosts &&
+                            recentPosts.map((post) => 
+                                <div key={post.id}>
+                                    <Card description={post.description} title={post.title} image={post.imageContent} createdAt={format(new Date(post.createdAt), "do MMM yyyy")} category={post.category} slug={post.slug}  />
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
             </main>
