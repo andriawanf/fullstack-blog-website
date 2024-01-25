@@ -23,8 +23,8 @@ export default function BlogsContext({ children }){
         const fetchPosts = async () => {
             setIsLoading(true);
             try {
-                await axios.get(`${BASE_URL}/everything?q=tech&sortBy=popularity&apiKey=${import.meta.env.VITE_NEWSAPI_KEY}`)
-                    .then(data => setBlogs(data.data.articles.filter(item => item.urlToImage !== null)))
+                await axios.get('/api/post/getPosts')
+                    .then(data => setBlogs(data.data.posts))
             } catch (error) {
                 console.log(error.message)
             }

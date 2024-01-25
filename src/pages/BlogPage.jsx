@@ -52,7 +52,6 @@ function BlogPage() {
         }
     }, []);
 
-    console.log(recentPosts)
     return (
         <PageContainer>
             <Navbar />

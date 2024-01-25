@@ -80,11 +80,11 @@ export default function Index() {
                             </div>
                         </div>
 
-                        <ul className="grid gap-4 mt-4 sm:grid-cols-2 lg:grid-cols-3">
+                        <div className="grid gap-4 mt-4 sm:grid-cols-2 lg:grid-cols-3">
                             {currentPosts.map((post) => {
-                                return <Card body={post.description} title={post.title} key={post.id} image={post.urlToImage} publishedAt={format(new Date(post.publishedAt), "do MMM yyyy")} />
+                                return <Card description={post.description} title={post.title} key={post.id} image={post.imageContent} createdAt={format(new Date(post.createdAt), "do MMM yyyy")} category={post.category} slug={post.slug} />
                             })}
-                        </ul>
+                        </div>
                         <div className="mt-10">
                             <Pagination pages={howManyPages} setCurrentPage={setCurrentPage} />
                         </div>
