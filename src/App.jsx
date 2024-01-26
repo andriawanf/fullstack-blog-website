@@ -12,6 +12,7 @@ import PageNotFound404 from "./components/PageNotFound404"
 import SignIn from "./pages/SignIn";
 import Signup from "./pages/Signup";
 import BlogPage from "./pages/BlogPage";
+import Profile from "./pages/Profile";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/blog" element={<Index />} />
                 <Route path="/blog/write" element={<WriteBlog />} />
                 <Route path="/blog/:blogSlug" element={<BlogPage/>} />
+                <Route path="/profile/admin" element={<Profile/>} />
                 <Route path="*" element={<PageNotFound404 />} />
               </Routes>
             </Router>
