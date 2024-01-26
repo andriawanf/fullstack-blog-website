@@ -140,12 +140,12 @@ function Navbar() {
                                     )}
                                     <Menu.Item>
                                         {({ active }) => (
-                                            <a
-                                                href="#"
+                                            <Link
+                                                to='/profile/admin'
                                                 className={classNames(active ? 'bg-primary/20 rounded-md' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                             >
                                                 Settings
-                                            </a>
+                                            </Link>
                                         )}
                                     </Menu.Item>
                                     <Menu.Item>
