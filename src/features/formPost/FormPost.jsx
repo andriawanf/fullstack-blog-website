@@ -146,11 +146,13 @@ export default function FormPost() {
                         className="w-full px-3 py-2 mt-1.5 text-sm font-medium border rounded-md bg-foreground border-black/30 placeholder:text-primaryContent/60 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 font-nunito"
                         rows="5"
                         placeholder="Enter any description about your blog..."
-                        onChange={(e) =>setFormData({...formData, description: e.target.value}) }
+                        onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     ></textarea>
                 </div>
-                <ReactQuill theme="snow" placeholder="Write your blog here..." className="mb-12 h-72 font-nunito bg-foreground" required onChange={(value) => { setFormData({ ...formData, content: value }) }} />
-                <Button title="Submit" bgColor="bg-primary" size="w-full" type="submit" />
+                <ReactQuill theme="snow" placeholder="Write your blog here..." className="h-full mb-12 rounded-lg font-nunito bg-foreground" required onChange={(value) => { setFormData({ ...formData, content: value }) }} />
+                <div className="flex justify-end">
+                    <Button title="Submit" bgColor="bg-primary" size="w-fit" type="submit" />
+                </div>
             </form>
         </div>
     )

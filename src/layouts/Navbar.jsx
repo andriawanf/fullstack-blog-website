@@ -141,7 +141,7 @@ function Navbar() {
                                     <Menu.Item>
                                         {({ active }) => (
                                             <Link
-                                                to='/profile/admin'
+                                                to='/settings'
                                                 className={classNames(active ? 'bg-primary/20 rounded-md' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                             >
                                                 Settings

@@ -11,27 +11,23 @@ import { useContext } from "react";
 // import InfiniteSlider from "../components/ui/InfiniteSlider";
 
 function HomePage() {
-    const {theme} = useContext(ThemeContext);
+    const { theme } = useContext(ThemeContext);
 
     return (
         <>
-            <PageContainer >
-                <Navbar />
-                <Featured />
-                <div className="py-40 ">
-                    <AllBlogs />
-                </div>
-                <div className={theme === 'bg-primaryBackground text-primaryContent' ? "px-5 py-10 border shadow-lg shadow-border border-border bg-foreground rounded-3xl" : "px-5 py-10 border shadow-lg border-border bg-foreground rounded-3xl"}>
-                    <CategoriesSection />
-                </div>
-                <div className="py-40">
-                    <BlogsGrid />
-                </div>
-                <div>
-                    <ContactUs />
-                </div>
-                    <Footers />
-            </PageContainer>
+            <Featured />
+            <div className="py-40 ">
+                <AllBlogs />
+            </div>
+            <div className={theme === 'bg-primaryBackground text-primaryContent' ? "px-5 py-10 border shadow-lg shadow-border border-border bg-foreground rounded-3xl" : "px-5 py-10 border shadow-lg border-border bg-foreground rounded-3xl"}>
+                <CategoriesSection />
+            </div>
+            <div className="py-40">
+                <BlogsGrid />
+            </div>
+            <div>
+                <ContactUs />
+            </div>
         </>
     )
 }

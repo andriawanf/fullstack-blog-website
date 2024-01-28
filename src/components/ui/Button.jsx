@@ -3,7 +3,7 @@
 function Button({ title, icon, bgColor, size, type, onClick}) {
   return (
     <button
-      className={`relative overflow-hidden px-10 py-2.5 font-medium text-primaryContent transition duration-300 rounded-md hover:scale-105 active:scale-75 ease ${bgColor} ${size}`}
+      className={`relative overflow-hidden px-8 py-4 font-medium text-primaryContent transition duration-300 rounded-lg hover:scale-105 active:scale-75 ease ${bgColor} ${size}`}
       type={type}
       onClick={onClick}
     >

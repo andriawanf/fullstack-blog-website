@@ -11,9 +11,9 @@ function AuthLinks() {
         <>
             {currentUser ? (
                 <>
-                    <Link to="blog/write" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-primaryContent hover:text-primaryBackground">Write</Link>
+                    <Link to="blog/write" className="px-4 py-2.5 text-sm font-medium rounded-lg hover:bg-primaryContent hover:text-primaryBackground">Write</Link>
                     <button
-                        className="relative inline-flex items-center px-3 py-2 overflow-hidden rounded-md text-primaryContent group focus:outline-none focus:ring bg-primary"
+                        className="relative inline-flex items-center px-4 py-2.5 overflow-hidden rounded-lg text-primaryContent group focus:outline-none focus:ring bg-primary"
                     >
                         <i className="absolute transition-all ri-logout-box-line -end-full group-hover:end-2"></i>
                         <span className="text-sm font-medium transition-all font-nunito group-hover:me-4"> Sign up </span>
@@ -22,7 +22,7 @@ function AuthLinks() {
             ) : (
                 <Link to="/signin">
                     <button
-                        className={theme === 'bg-primaryBackground text-primaryContent' ? "relative inline-flex items-center px-3 py-2 overflow-hidden text-primaryContent rounded-md group focus:outline-none focus:ring bg-primary" : "relative inline-flex items-center px-3 py-2 overflow-hidden text-primaryContent rounded-md group focus:outline-none focus:ring bg-primary"}
+                        className={theme === 'bg-primaryBackground text-primaryContent' ? "relative inline-flex items-center px-4 py-2.5 overflow-hidden text-primaryContent rounded-lg group focus:outline-none focus:ring bg-primary" : "relative inline-flex items-center px-4 py-2.5 overflow-hidden text-primaryContent rounded-lg group focus:outline-none focus:ring bg-primary"}
                     >
                         <i className="absolute transition-all ri-login-box-line -end-full group-hover:end-2"></i>
                         <span className="text-sm font-medium transition-all font-nunito group-hover:me-4"> Login </span>

@@ -7,12 +7,16 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Index from './pages/blogs/Index.jsx';
 import HomePage from "./pages/HomePage";
 import WriteBlog from "./pages/writeBlog/WriteBlog";
-import BlogsContext  from "./contexts/BlogsContext.jsx";
+import BlogsContext from "./contexts/BlogsContext.jsx";
 import PageNotFound404 from "./components/PageNotFound404"
 import SignIn from "./pages/SignIn";
 import Signup from "./pages/Signup";
 import BlogPage from "./pages/BlogPage";
-import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
+import Navbar from "./layouts/Navbar";
+import Footers from "./components/footer/Footers";
+import PageContainer from "./layouts/PageContainer";
+import OnlyAdminPrivateRoute from "./components/OnlyAdminPrivateRoute";
 
 function App() {
 
@@ -22,16 +26,22 @@ function App() {
         <ThemeProvider>
           <BlogsContext>
             <Router>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/signin" element={<SignIn />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/blog" element={<Index />} />
-                <Route path="/blog/write" element={<WriteBlog />} />
-                <Route path="/blog/:blogSlug" element={<BlogPage/>} />
-                <Route path="/profile/admin" element={<Profile/>} />
-                <Route path="*" element={<PageNotFound404 />} />
-              </Routes>
+              <PageContainer>
+                <Navbar />
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/signin" element={<SignIn />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/blog" element={<Index />} />
+                  <Route element={<OnlyAdminPrivateRoute/>}  >
+                    <Route path="/blog/write" element={<WriteBlog />} />
+                  </Route>
+                  <Route path="/blog/:blogSlug" element={<BlogPage />} />
+                  <Route path="/settings" element={<Settings />} />
+                  <Route path="*" element={<PageNotFound404 />} />
+                </Routes>
+                <Footers />
+              </PageContainer>
             </Router>
           </BlogsContext>
         </ThemeProvider>
