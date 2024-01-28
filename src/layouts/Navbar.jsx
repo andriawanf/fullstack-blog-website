@@ -1,7 +1,7 @@
 import { useState, Fragment, useContext } from "react";
 import AuthLinks from "../features/authLinks/AuthLinks";
 import ThemeToggle from "../features/themeToggle/ThemeToggle";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, Transition } from '@headlessui/react';
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -25,6 +25,7 @@ function Navbar() {
     const { currentUser } = useSelector(state => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
     const { theme } = useContext(ThemeContext);
     const [open, setOpen] = useState(false);
 
@@ -80,10 +81,10 @@ function Navbar() {
                         key={item.name}
                         to={item.to}
                         className={theme === 'bg-primaryBackground text-primaryContent' ? classNames(
-                            item.current ? 'bg-primaryContent text-primaryBackground' : ' hover:bg-primaryContent hover:text-primaryBackground',
+                            location.pathname === item.to ? 'bg-primary text-primaryContent' : ' hover:bg-primary/20 hover:text-primaryContent',
                             'rounded-md px-3 py-2 text-sm font-medium'
                         ) : classNames(
-                            item.current ? 'bg-primaryBackground text-primaryContent' : ' hover:bg-primaryBackground hover:text-primaryContent',
+                            location.pathname === item.to ? 'bg-primary text-primaryContent' : ' hover:bg-primaryDark hover:text-primaryContent',
                             'rounded-md px-3 py-2 text-sm font-medium')}
                         aria-current={item.current ? 'page' : undefined}
                     >
@@ -115,12 +116,12 @@ function Navbar() {
                                 leaveFrom="transform opacity-100 scale-100"
                                 leaveTo="transform opacity-0 scale-95"
                             >
-                                <Menu.Items className="absolute right-0 z-10 px-1 py-1 mt-2 origin-top-right rounded-md shadow-lg w-65 bg-primaryBackground ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                <Menu.Items className="absolute right-0 z-10 px-1 py-1 mt-2 space-y-2 origin-top-right rounded-md shadow-lg w-65 bg-primaryBackground ring-1 ring-black ring-opacity-5 focus:outline-none">
                                     <Menu.Item>
                                         {({ active }) => (
                                             <a
                                                 href="#"
-                                                className={classNames(active ? 'bg-primary/20 rounded-md' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                className={classNames(active ? 'bg-primary/20 rounded-md' : '', 'block px-4 py-2 text-sm text-primaryContent')}
                                             >
                                                 {currentUser.data.email}
                                             </a>
@@ -131,7 +132,7 @@ function Navbar() {
                                             {({ active }) => (
                                                 <Link
                                                     to="/blog/write"
-                                                    className={classNames(active ? 'bg-primary/20 rounded-md' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                    className={classNames(active ? 'bg-primary/20 rounded-md' : '', 'block px-4 py-2 text-sm text-primaryContent')}
                                                 >
                                                     Write blog
                                                 </Link>
@@ -142,7 +143,7 @@ function Navbar() {
                                         {({ active }) => (
                                             <Link
                                                 to='/settings'
-                                                className={classNames(active ? 'bg-primary/20 rounded-md' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                className={classNames( location.pathname === '/settings' ? 'bg-primary rounded-md' : 'hover:bg-primary/20 rounded-md', 'block bg px-4 py-2 text-sm text-primaryContent ')}
                                             >
                                                 Settings
                                             </Link>
