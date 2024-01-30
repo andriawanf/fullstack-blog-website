@@ -1,17 +1,14 @@
 import SelectOption from "../../components/ui/SelectOption";
 import TextInput from "../../components/ui/TextInput";
 import Button from "../../components/ui/Button";
-import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useState } from "react";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
 import app from "../../services/firebase";
-import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import TipTapEditor from "../../components/TipTapEditor";
-import { useEffect } from "react";
 import { useContext } from "react";
 import { tiptapContext } from "../../contexts/TipTapContext";
 import { Progress } from "@material-tailwind/react";
@@ -158,7 +155,6 @@ export default function FormPost() {
                         onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     ></textarea>
                 </div>
-                {/* <ReactQuill theme="snow" placeholder="Write your blog here..." className="h-full mb-12 rounded-lg font-nunito bg-foreground" required onChange={(value) => { setFormData({ ...formData, content: value }) }} /> */}
                 <div className="bg-foreground rounded-lg border border-primaryContent/30">
                     <TipTapEditor />
                 </div>
