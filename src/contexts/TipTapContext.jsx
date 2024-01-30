@@ -6,11 +6,13 @@ export const tiptapContext = createContext();
 function TipTapContext({children}) {
     const [editorState, setEditorState] = useState('');
     const debouncedEditorState = useDebounce(editorState, 500);
-    useEffect(() => {
-        console.log(debouncedEditorState);
-    }, [debouncedEditorState]);
+    // useEffect(() => {
+    //     if(debouncedEditorState === "") return;
+
+    //     console.log(debouncedEditorState);
+    // }, [debouncedEditorState]);
   return (
-    <tiptapContext.Provider value={{editorState, setEditorState}}>{children}</tiptapContext.Provider>
+    <tiptapContext.Provider value={{editorState, setEditorState, debouncedEditorState}}>{children}</tiptapContext.Provider>
   )
 }
 

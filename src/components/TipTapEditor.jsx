@@ -55,7 +55,7 @@ const content = `
   </blockquote>
   `
 function TipTapEditor() {
-    const {setEditorState} = useContext(tiptapContext);
+    const {setEditorState, debouncedEditorState} = useContext(tiptapContext);
     
     const editor = useEditor({
         autofocus: true,
@@ -69,7 +69,9 @@ function TipTapEditor() {
         <>
             <div className='flex justify-between items-start p-4 border-b border-primaryContent/30'>
                 {editor && <MenuBarTipTap editor={editor} />}
-                <button className='px-3 py-1.5 bg-primaryContent rounded-lg text-primaryBackground'>Saved</button>
+                {/* <button className='px-3 py-1.5 bg-primaryContent rounded-lg text-primaryBackground'>
+                    {debouncedEditorState ? "Saving..." : "Saved"}
+                </button> */}
             </div>
             <div className='prose max-w-7xl'>
                 <EditorContent editor={editor}/>

@@ -14,6 +14,7 @@ import TipTapEditor from "../../components/TipTapEditor";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { tiptapContext } from "../../contexts/TipTapContext";
+import { Progress } from "@material-tailwind/react";
 
 export default function FormPost() {
     const { editorState } = useContext(tiptapContext);
@@ -23,6 +24,7 @@ export default function FormPost() {
     const [imageUploadError, setimageUploadError] = useState(null);
     const [formData, setFormData] = useState({});
     const [publishError, setPublishError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -70,7 +72,8 @@ export default function FormPost() {
     const handleSubmitForm = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('/api/post/create', {...formData, content: editorState});
+            setIsLoading(true);
+            const res = await axios.post('/api/post/create', { ...formData, content: editorState });
             if (res.statusText !== "OK") {
                 setPublishError(res.message);
                 return;
@@ -78,6 +81,7 @@ export default function FormPost() {
 
             if (res.statusText === "OK") {
                 setPublishError(null);
+                setIsLoading(false);
                 navigate(`/`);
             }
         } catch (error) {
@@ -125,22 +129,22 @@ export default function FormPost() {
                                 )
                             }
                         </div>
-                        <button
-                            className={`relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-primaryContent bg-primary rounded-md group focus:outline-none focus:ring w-full`}
-                            type="button"
-                            onClick={handleUploadImage}
-                            disabled={imageUploadProgress}
-                        >
-                            <span className="text-sm font-medium transition-all font-nunito group-hover:me-4">
-                                {
-                                    imageUploadProgress ? (
-                                        <div className="w-16 h-16">
-                                            <CircularProgressbar value={imageUploadProgress} text={`${imageUploadProgress || 0}%`} />
-                                        </div>
-                                    ) : "Upload Image"
-                                }
-                            </span>
-                        </button>
+                        {
+                            imageUploadProgress ? (
+                                <Progress value={imageUploadProgress} label={`${imageUploadProgress}% completed`} color="amber" />
+                            ) : (
+                                <button
+                                    className={`relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-primaryContent bg-primary rounded-md group focus:outline-none focus:ring w-full`}
+                                    type="button"
+                                    onClick={handleUploadImage}
+                                    disabled={imageUploadProgress}
+                                >
+                                    <span className="text-sm font-medium font-nunito">
+                                        Upload Image
+                                    </span>
+                                </button>
+                            )
+                        }
                     </div>
                 </div>
                 <div>
@@ -159,7 +163,7 @@ export default function FormPost() {
                     <TipTapEditor />
                 </div>
                 <div className="flex justify-end">
-                    <Button title="Submit" bgColor="bg-primary" size="w-fit" type="submit" />
+                    <Button title={isLoading ? "Loading..." : "Submit"} bgColor="bg-primary" size="w-fit" type="submit" />
                 </div>
             </form>
         </div>

@@ -64,7 +64,7 @@ function BlogPage() {
                     >
                         {post && post.category}
                     </a>
-                    <h2 className="max-w-5xl mb-12 text-4xl font-semibold leading-tight text-center font-dm">
+                    <h2 className="max-w-5xl mb-12 text-4xl font-bold leading-tight text-center font-dm">
                         {post && post.title}
                     </h2>
                 </div>
@@ -75,7 +75,7 @@ function BlogPage() {
             <div className="flex flex-col font-medium lg:flex-row lg:space-x-12 font-nunito">
 
                 <div className="w-full px-4 mt-12  leading-relaxed lg:px-0 lg:w-3/4">
-                    <div className="pb-6 text-lg text-justify post-content prose max-w-7xl leading-relaxed" dangerouslySetInnerHTML={{ __html: post && post.content }}></div>
+                    <div className="pb-6 text-lg text-justify prose max-w-7xl leading-relaxed" dangerouslySetInnerHTML={{ __html: post && post.content }}></div>
                 </div>
 
                 <div className="w-full max-w-screen-sm m-auto mt-12 lg:w-1/4">
