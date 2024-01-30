@@ -36,3 +36,16 @@ body {
 .post-content li{
     list-style-type: disc;
 }
+
+.tiptap.ProseMirror{
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-family: 'Nunito';
+    width: 100%;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    
+}

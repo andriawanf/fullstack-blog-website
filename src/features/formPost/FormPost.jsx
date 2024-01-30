@@ -10,8 +10,13 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import TipTapEditor from "../../components/TipTapEditor";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { tiptapContext } from "../../contexts/TipTapContext";
 
 export default function FormPost() {
+    const { editorState } = useContext(tiptapContext);
     const [value, setValue] = useState('');
     const [imageFile, setImageFile] = useState(null);
     const [imageUploadProgress, setImageUploadProgress] = useState(null);
@@ -65,7 +70,7 @@ export default function FormPost() {
     const handleSubmitForm = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('/api/post/create', formData);
+            const res = await axios.post('/api/post/create', {...formData, content: editorState});
             if (res.statusText !== "OK") {
                 setPublishError(res.message);
                 return;
@@ -149,7 +154,10 @@ export default function FormPost() {
                         onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     ></textarea>
                 </div>
-                <ReactQuill theme="snow" placeholder="Write your blog here..." className="h-full mb-12 rounded-lg font-nunito bg-foreground" required onChange={(value) => { setFormData({ ...formData, content: value }) }} />
+                {/* <ReactQuill theme="snow" placeholder="Write your blog here..." className="h-full mb-12 rounded-lg font-nunito bg-foreground" required onChange={(value) => { setFormData({ ...formData, content: value }) }} /> */}
+                <div className="bg-foreground rounded-lg border border-primaryContent/30">
+                    <TipTapEditor />
+                </div>
                 <div className="flex justify-end">
                     <Button title="Submit" bgColor="bg-primary" size="w-fit" type="submit" />
                 </div>

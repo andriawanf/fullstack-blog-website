@@ -33,7 +33,7 @@ function App() {
                   <Route path="/signin" element={<SignIn />} />
                   <Route path="/signup" element={<Signup />} />
                   <Route path="/blog" element={<Index />} />
-                  <Route element={<OnlyAdminPrivateRoute/>}  >
+                  <Route element={<OnlyAdminPrivateRoute />} >
                     <Route path="/blog/write" element={<WriteBlog />} />
                   </Route>
                   <Route path="/blog/:blogSlug" element={<BlogPage />} />

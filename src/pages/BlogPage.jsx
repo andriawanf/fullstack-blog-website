@@ -55,71 +55,63 @@ function BlogPage() {
     }, []);
 
     return (
-        <PageContainer>
-            <Navbar />
-            <main className="mt-10">
-                <div className="relative w-full mx-auto mb-4 md:mb-0">
-                    <div className="flex flex-col items-center justify-center w-full px-4 lg:px-0 ">
-                        <a
-                            href="#"
-                            className="inline-flex items-center justify-center mb-3 text-primaryDark font-dm"
-                        >
-                            {post && post.category}
-                        </a>
-                        <h2 className="max-w-5xl mb-12 text-4xl font-semibold leading-tight text-center font-dm">
-                            {post && post.title}
-                        </h2>
-                    </div>
-
-                    <img src={post && post.imageContent} className="object-cover w-full lg:rounded-2xl h-80" />
+        <main className="mt-10">
+            <div className="relative w-full mx-auto mb-4 md:mb-0">
+                <div className="flex flex-col items-center justify-center w-full px-4 lg:px-0 ">
+                    <a
+                        href="#"
+                        className="inline-flex items-center justify-center mb-3 text-primaryDark font-dm"
+                    >
+                        {post && post.category}
+                    </a>
+                    <h2 className="max-w-5xl mb-12 text-4xl font-semibold leading-tight text-center font-dm">
+                        {post && post.title}
+                    </h2>
                 </div>
 
-                <div className="flex flex-col font-medium lg:flex-row lg:space-x-12 font-nunito">
+                <img src={post && post.imageContent} className="object-cover w-full lg:rounded-2xl h-80" />
+            </div>
 
-                    <div className="w-full px-4 mt-12 text-lg leading-relaxed lg:px-0 lg:w-3/4">
-                        <p className="pb-6 text-justify">
-                            {post && post.description}
-                        </p>
+            <div className="flex flex-col font-medium lg:flex-row lg:space-x-12 font-nunito">
 
-                        <div className="pb-6 text-justify post-content" dangerouslySetInnerHTML={{ __html: post && post.content }}></div>
-                    </div>
+                <div className="w-full px-4 mt-12  leading-relaxed lg:px-0 lg:w-3/4">
+                    <div className="pb-6 text-lg text-justify post-content prose max-w-7xl leading-relaxed" dangerouslySetInnerHTML={{ __html: post && post.content }}></div>
+                </div>
 
-                    <div className="w-full max-w-screen-sm m-auto mt-12 lg:w-1/4">
-                        <div className="p-4 border-t border-b md:border md:rounded">
-                            <div className="flex py-2">
-                                <img src="https://randomuser.me/api/portraits/men/97.jpg"
-                                    className="object-cover w-10 h-10 mr-2 rounded-full" />
-                                <div>
-                                    <p className="text-sm font-semibold text-gray-700"> Mike Sullivan </p>
-                                    <p className="text-xs font-semibold text-gray-600"> Editor </p>
-                                </div>
+                <div className="w-full max-w-screen-sm m-auto mt-12 lg:w-1/4">
+                    <div className="p-4 border-t border-b md:border md:rounded">
+                        <div className="flex py-2">
+                            <img src="https://randomuser.me/api/portraits/men/97.jpg"
+                                className="object-cover w-10 h-10 mr-2 rounded-full" />
+                            <div>
+                                <p className="text-sm font-semibold text-gray-700"> Mike Sullivan </p>
+                                <p className="text-xs font-semibold text-gray-600"> Editor </p>
                             </div>
-                            <p className="py-3 text-gray-700">
-                                Mike writes about technology
-                                Yourself required no at thoughts delicate landlord it be. Branched dashwood do is whatever it.
-                            </p>
-                            <button className="flex items-center justify-center w-full px-2 py-1 text-gray-100 bg-green-700 rounded">
-                                Follow
-                                <i className='ml-2 bx bx-user-plus' ></i>
-                            </button>
                         </div>
+                        <p className="py-3 text-gray-700">
+                            Mike writes about technology
+                            Yourself required no at thoughts delicate landlord it be. Branched dashwood do is whatever it.
+                        </p>
+                        <button className="flex items-center justify-center w-full px-2 py-1 text-gray-100 bg-green-700 rounded">
+                            Follow
+                            <i className='ml-2 bx bx-user-plus' ></i>
+                        </button>
                     </div>
                 </div>
-                <div className='flex flex-col items-center justify-center mb-5'>
-                    <h1 className='mt-5 text-xl font-semibold font-dm'>Recent articles</h1>
-                    <div className="grid gap-4 mt-5 sm:grid-cols-2 lg:grid-cols-3">
-                        {recentPosts &&
-                            recentPosts.map((post) => 
-                                <div key={post.id}>
-                                    <Card description={post.description} title={post.title} image={post.imageContent} createdAt={format(new Date(post.createdAt), "do MMM yyyy")} category={post.category} slug={post.slug}  />
-                                </div>
-                            )
-                        }
-                    </div>
+            </div>
+            <div className='flex flex-col items-center justify-center mb-5'>
+                <h1 className='mt-5 text-xl font-semibold font-dm'>Recent articles</h1>
+                <div className="grid gap-4 mt-5 sm:grid-cols-2 lg:grid-cols-3">
+                    {recentPosts &&
+                        recentPosts.map((post) =>
+                            <div key={post.id}>
+                                <Card description={post.description} title={post.title} image={post.imageContent} createdAt={format(new Date(post.createdAt), "do MMM yyyy")} category={post.category} slug={post.slug} />
+                            </div>
+                        )
+                    }
                 </div>
-            </main>
-            <Footers />
-        </PageContainer>
+            </div>
+        </main>
     )
 }
 
