@@ -1,6 +1,6 @@
 import SelectOption from "../../components/ui/SelectOption";
 import TextInput from "../../components/ui/TextInput";
-import Button from "../../components/ui/Button";
+import { Button } from "@material-tailwind/react";
 import 'react-quill/dist/quill.snow.css';
 import { useState } from "react";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
@@ -45,7 +45,7 @@ export default function FormPost() {
                 (snapshot) => {
                     const progress =
                         (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    setImageUploadProgress(progress.toFixed(0));
+                    setImageUploadProgress(parseInt(progress.toFixed(0)));
                 },
                 (error) => {
                     setimageUploadError("Image upload failed");
@@ -128,7 +128,7 @@ export default function FormPost() {
                         </div>
                         {
                             imageUploadProgress ? (
-                                <Progress value={imageUploadProgress} label={`${imageUploadProgress}% completed`} color="amber" />
+                                <Progress value={imageUploadProgress} label="completed" color="amber" size="lg" />
                             ) : (
                                 <button
                                     className={`relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-primaryContent bg-primary rounded-md group focus:outline-none focus:ring w-full`}
@@ -159,7 +159,8 @@ export default function FormPost() {
                     <TipTapEditor />
                 </div>
                 <div className="flex justify-end">
-                    <Button title={isLoading ? "Loading..." : "Submit"} bgColor="bg-primary" size="w-fit" type="submit" />
+                    {/* <Button title={isLoading ? "Loading..." : "Submit"} bgColor="bg-primary" size="w-fit" type="submit" /> */}
+                    <Button size="lg" variant="gradient" color="yellow" type="submit">{isLoading ? "Loading..." : "Submit"}</Button>
                 </div>
             </form>
         </div>
