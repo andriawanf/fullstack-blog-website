@@ -21,9 +21,7 @@ import OnlyAdminPrivateRoute from "./components/OnlyAdminPrivateRoute";
 function App() {
 
   return (
-    <main className="w-full h-full overflow-hidden">
-      <ThemeContextProvider>
-        <ThemeProvider>
+    <main className="w-full min-h-screen overflow-hidden bg-black-500">
           <BlogsContext>
             <Router>
               <PageContainer>
@@ -40,12 +38,14 @@ function App() {
                   <Route path="/settings" element={<Settings />} />
                   <Route path="*" element={<PageNotFound404 />} />
                 </Routes>
-                <Footers />
+                {/* <Footers /> */}
               </PageContainer>
             </Router>
           </BlogsContext>
+      {/* <ThemeContextProvider>
+        <ThemeProvider>
         </ThemeProvider>
-      </ThemeContextProvider>
+      </ThemeContextProvider> */}
     </main>
   )
 }
