@@ -9,6 +9,7 @@ import { signOutSuccess } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../contexts/ThemeContext";
+import { Badge, Button, IconButton } from "@material-tailwind/react";
 
 const navigation = [
     { name: 'Dashboard', to: '/', icon: 'ri-home-3-line ri-xl' },
@@ -179,7 +180,7 @@ function Navbar() {
         //         )}
         //     </div>
         // </nav>
-        <nav className="fixed left-0 right-0 z-10 flex items-center justify-between px-6 py-4 mx-4 top-4 bg-white-500/5 rounded-xl backdrop-blur-xl lg:mx-20 md:mx-10">
+        <nav className="fixed left-0 right-0 z-50 flex items-center justify-between px-6 py-4 mx-4 top-4 bg-white-500/5 rounded-xl backdrop-blur-xl lg:mx-20 md:mx-10">
             {/* Left Navbar */}
             <Link to="/" className="flex flex-row items-center gap-3">
                 <div className="w-6 h-6 rounded-full bg-blueLight-500"></div>
@@ -196,15 +197,17 @@ function Navbar() {
                 ))}
             </div>
             {/* Right Navbar */}
-            <div className="flex gap-6 item-center">
+            <div className="flex gap-4 item-center">
                 {/* Notif & Theme */}
-                <div className="flex gap-6 text-white-500">
-                    <button type="button">
-                        <i className="ri-sun-line ri-1"></i>
-                    </button>
-                    <button type="button">
-                        <i className="ri-notification-2-line ri-1"></i>
-                    </button>
+                <div className="flex gap-2 text-white-500">
+                    <IconButton className="bg-transparent">
+                        <i className="ri-sun-line ri-xl"></i>
+                    </IconButton>
+                    <Badge content="5" className="bg-red-900">
+                        <IconButton className="bg-transparent">
+                            <i className="ri-notification-2-line ri-xl"></i>
+                        </IconButton>
+                    </Badge>
                 </div>
                 {/* Profile User or auth button */}
                 <div>
