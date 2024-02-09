@@ -92,12 +92,23 @@ export default withMT({
       },
       animation: {
         'infinite-scroll': 'infinite-scroll 140s linear infinite',
+        'text-marquee-one': 'text-marquee-right 75s linear infinite',
+        'text-marquee-two': 'text-marquee-left 65s linear infinite',
+        'text-marquee-three': 'text-marquee-right 75s linear infinite',
       },
       keyframes: {
         'infinite-scroll': {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(-100%)' },
-        }
+        },
+        'text-marquee-right': {
+          from: { transform: 'translateX(-80%)' },
+          to: { transform: 'translateX(0%)' },
+        },
+        'text-marquee-left': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        },
       },
     },
   },

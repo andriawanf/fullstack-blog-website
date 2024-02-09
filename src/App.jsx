@@ -38,7 +38,7 @@ function App() {
                   <Route path="/settings" element={<Settings />} />
                   <Route path="*" element={<PageNotFound404 />} />
                 </Routes>
-                {/* <Footers /> */}
+                <Footers />
               </PageContainer>
             </Router>
           </BlogsContext>

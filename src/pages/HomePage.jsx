@@ -11,7 +11,18 @@ import { useContext } from "react";
 import InfinityScrollHorizontal from "../components/InfinityScrollHorizontal";
 import productSlider from "../data/data.js";
 import CardFeatureSlider from "../components/CardFeatureSlider";
-import { Button } from "@material-tailwind/react";
+import {
+    Button,
+    IconButton,
+    Menu,
+    MenuHandler,
+    MenuList,
+    MenuItem,
+    Tooltip,
+    Input,
+    Textarea
+} from "@material-tailwind/react";
+import InfiniteSlider from "../components/ui/InfiniteSlider";
 
 function HomePage() {
     // const { theme } = useContext(ThemeContext);
@@ -40,6 +51,7 @@ function HomePage() {
                     alt="img-hero"
                 />
             </section>
+
             <div className="flex flex-col gap-5 pt-8 md:pt-12 lg:gap-7 xl:pt-16 xl:gap-10">
                 <p className="text-[8px] md:text-xs xl:text-lg text-center font-nunito text-white-500 font-light leading-relaxed">Crafting a masterpiece requires wielding more than 10 captivating tools of creativity.</p>
                 <div className="w-full mx-auto">
@@ -60,7 +72,7 @@ function HomePage() {
             </div>
 
             {/* Section 2 */}
-            <section className="flex flex-col gap-16 mt-20 md:mt-36 xl:gap-24 xl:mt-44">
+            <section className="flex flex-col gap-8 pt-7 md:pt-10 md:gap-14 xl:gap-24 lg:gap-16 lg:pt-20">
                 <div className="flex flex-col items-center justify-center gap-6 xl:gap-9">
                     <div className="flex items-center gap-2 px-4 py-1 rounded-full bg-blueLight-500 w-fit text-blueDark-500">
                         <i className="ri-bard-fill ri-1"></i>
@@ -75,13 +87,13 @@ function HomePage() {
             </section>
 
             {/* Section 3 */}
-            <section className="flex flex-col gap-16 mt-20 md:mt-36 xl:gap-24 xl:mt-44 xl:py-24 xl:px-6 ">
+            <section className="flex flex-col pt-0 xl:pt-52 lg:pt-40">
                 <img src="/images/Section-3.png" alt="" className="w-full h-full" />
             </section>
 
             {/* Section 4 */}
-            <section className="mt-40">
-                <header className="flex flex-row items-end justify-between w-full">
+            <section className="flex flex-col gap-10 py-6 xl:py-24 lg:py-20 md:py-10">
+                <header className="flex flex-col items-end justify-between w-full gap-2 xl:flex-row">
                     <div>
                         <h2 className="xl:max-w-3xl text-3xl md:text-4xl md:max-w-lg xl:text-6xl font-bold xl:leading-[4.5rem] font-dm text-white-500">Discover Blogs</h2>
 
@@ -89,8 +101,8 @@ function HomePage() {
                             Unearth captivating content and stay in the loop with the latest trends. Your favorite blogs, all in one place.
                         </p>
                     </div>
-                    <Button variant="text" className="flex items-center gap-2 text-white-500 bg-white-500/5 hover:bg-white-500 hover:text-black-500">
-                        Read More{" "}
+                    <Button variant="text" className="flex items-center justify-center w-full gap-2 xl:w-fit text-white-500 bg-white-500/5 hover:bg-white-500 hover:text-black-500">
+                        Read More
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -108,96 +120,266 @@ function HomePage() {
                     </Button>
                 </header>
 
-                <ul className="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
+                <ul className="grid justify-between grid-cols-1 gap-5 xl:gap-10 lg:grid-cols-2 xl:grid-cols-3">
                     <li>
-                        <a href="#" className="block overflow-hidden group">
-                            <img
-                                src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                                alt=""
-                                className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-                            />
-
-                            <div className="relative pt-3 bg-white">
-                                <h3 className="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-                                    Basic Tee
-                                </h3>
-
-                                <p className="mt-2">
-                                    <span className="sr-only"> Regular Price </span>
-
-                                    <span className="tracking-wider text-gray-900"> £24.00 GBP </span>
-                                </p>
+                        <article className="w-full overflow-hidden border bg-white-500/5 border-white-500/20 rounded-3xl">
+                            <div>
+                                <img src="/src/assets/images/norbert-kowalczyk-uEyejonvHoI-unsplash.jpg" alt="" className="object-cover w-full h-56 transition duration-500 rounded-t-3xl" />
                             </div>
-                        </a>
+                            <div className="flex flex-col gap-3 p-4 font-nunito">
+                                <p className="text-sm tracking-wide leading-[110%] text-white-700 font-light">Thursday, Feb 01 2024</p>
+                                <title className="text-xl font-bold font-dm leading-[130%] line-clamp-3 text-white-500 tracking-wide">Unveiling the Power of AI: Exploring Possibilities and Real-world Applications</title>
+                                <p className="line-clamp-2 text-sm tracking-wide leading-[130%] text-white-700 font-light">Artificial Intelligence (AI) stands at the forefront of technological innovation, reshaping the way we live, work, and interact. In this blog post, we embark on a journey to unravel the diverse facets of AI, exploring its limitless possibilities and real-world applications.</p>
+                            </div>
+                            <div className="flex flex-row items-center justify-between p-4">
+                                <div className="flex flex-row items-center gap-4">
+                                    <img src="/src/assets/images/norbert-kowalczyk-uEyejonvHoI-unsplash.jpg" alt="" className="object-cover w-10 h-10 rounded-full" />
+                                    <div className="flex flex-col gap-2 font-nunito">
+                                        <p className="text-sm tracking-wide leading-[110%] text-white-700 font-light">Written by</p>
+                                        <h1 className="text-base tracking-wide leading-[110%] text-white-500 font-semibold">Darrel Steward</h1>
+                                    </div>
+                                </div>
+                                <Menu placement="top-end">
+                                    <MenuHandler>
+                                        <IconButton className="text-white-500 bg-white-500/5">
+                                            <i className="ri-share-line ri-xl"></i>
+                                        </IconButton>
+                                    </MenuHandler>
+                                    <MenuList className="flex flex-col gap-2 shadow-md text-black-500 bg-white-500 rounded-xl">
+                                        <a href="#">
+                                            <Button className="flex items-center w-full gap-2 text-white-500">
+                                                <i className="ri-link ri-lg"></i>
+                                                <p>Copy link</p>
+                                            </Button>
+                                        </a>
+                                        <div className="flex items-center justify-between">
+                                            <a href="#">
+                                                <Tooltip
+                                                    content="Share with Facebook"
+                                                    placement="bottom"
+                                                    animate={{
+                                                        mount: { scale: 1, y: 0 },
+                                                        unmount: { scale: 0, y: -15 },
+                                                    }}
+                                                    className="bg-white-500 text-black-500"
+                                                >
+                                                    <IconButton className=" text-white-500">
+                                                        <i className="ri-facebook-fill ri-lg"></i>
+                                                    </IconButton>
+                                                </Tooltip>
+                                            </a>
+                                            <a href="#">
+                                                <Tooltip
+                                                    content="Share with Instagram"
+                                                    placement="bottom"
+                                                    animate={{
+                                                        mount: { scale: 1, y: 0 },
+                                                        unmount: { scale: 0, y: -15 },
+                                                    }}
+                                                    className="bg-white-500 text-black-500"
+                                                >
+                                                    <IconButton className=" text-white-500">
+                                                        <i className="ri-instagram-fill ri-lg"></i>
+                                                    </IconButton>
+                                                </Tooltip>
+                                            </a>
+                                            <a href="#">
+                                                <Tooltip
+                                                    content="Share with Twitter"
+                                                    placement="bottom"
+                                                    animate={{
+                                                        mount: { scale: 1, y: 0 },
+                                                        unmount: { scale: 0, y: -15 },
+                                                    }}
+                                                    className="bg-white-500 text-black-500"
+                                                >
+                                                    <IconButton className=" text-white-500">
+                                                        <i className="ri-twitter-fill ri-lg"></i>
+                                                    </IconButton>
+                                                </Tooltip>
+                                            </a>
+                                        </div>
+                                    </MenuList>
+                                </Menu>
+                            </div>
+                        </article>
                     </li>
-
                     <li>
-                        <a href="#" className="block overflow-hidden group">
-                            <img
-                                src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                                alt=""
-                                className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-                            />
-
-                            <div className="relative pt-3 bg-white">
-                                <h3 className="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-                                    Basic Tee
-                                </h3>
-
-                                <p className="mt-2">
-                                    <span className="sr-only"> Regular Price </span>
-
-                                    <span className="tracking-wider text-gray-900"> £24.00 GBP </span>
-                                </p>
+                        <article className="w-full overflow-hidden border bg-white-500/5 border-white-500/20 rounded-3xl">
+                            <div>
+                                <img src="/src/assets/images/norbert-kowalczyk-uEyejonvHoI-unsplash.jpg" alt="" className="object-cover w-full h-56 transition duration-500 rounded-t-3xl" />
                             </div>
-                        </a>
+                            <div className="flex flex-col gap-3 p-4 font-nunito">
+                                <p className="text-sm tracking-wide leading-[110%] text-white-700 font-light">Thursday, Jan 30 2024</p>
+                                <title className="text-xl font-bold font-dm leading-[130%] line-clamp-3 text-white-500 tracking-wide">Augmented Reality: Transforming How We Interact with the Digital World</title>
+                                <p className="line-clamp-2 text-sm tracking-wide leading-[130%] text-white-700 font-light">Step into the realm of augmented reality (AR) and discover how this cutting-edge technology is reshaping our everyday experiences. Learn about the latest AR applications, from gaming to education, and envision a future where the digital and physical worlds seamlessly coexist.</p>
+                            </div>
+                            <div className="flex flex-row items-center justify-between p-4">
+                                <div className="flex flex-row items-center gap-4">
+                                    <img src="/src/assets/images/norbert-kowalczyk-uEyejonvHoI-unsplash.jpg" alt="" className="object-cover w-10 h-10 rounded-full" />
+                                    <div className="flex flex-col gap-2 font-nunito">
+                                        <p className="text-sm tracking-wide leading-[110%] text-white-700 font-light">Written by</p>
+                                        <h1 className="text-base tracking-wide leading-[110%] text-white-500 font-semibold">Kate Tanner</h1>
+                                    </div>
+                                </div>
+                                <Menu placement="top-end">
+                                    <MenuHandler>
+                                        <IconButton className="text-white-500 bg-white-500/5">
+                                            <i className="ri-share-line ri-xl"></i>
+                                        </IconButton>
+                                    </MenuHandler>
+                                    <MenuList className="flex flex-col gap-2 shadow-md text-black-500 bg-white-500 rounded-xl">
+                                        <a href="#">
+                                            <Button className="flex items-center w-full gap-2 text-white-500">
+                                                <i className="ri-link ri-lg"></i>
+                                                <p>Copy link</p>
+                                            </Button>
+                                        </a>
+                                        <div className="flex items-center justify-between">
+                                            <a href="#">
+                                                <Tooltip
+                                                    content="Share with Facebook"
+                                                    placement="bottom"
+                                                    animate={{
+                                                        mount: { scale: 1, y: 0 },
+                                                        unmount: { scale: 0, y: -15 },
+                                                    }}
+                                                    className="bg-white-500 text-black-500"
+                                                >
+                                                    <IconButton className=" text-white-500">
+                                                        <i className="ri-facebook-fill ri-lg"></i>
+                                                    </IconButton>
+                                                </Tooltip>
+                                            </a>
+                                            <a href="#">
+                                                <Tooltip
+                                                    content="Share with Instagram"
+                                                    placement="bottom"
+                                                    animate={{
+                                                        mount: { scale: 1, y: 0 },
+                                                        unmount: { scale: 0, y: -15 },
+                                                    }}
+                                                    className="bg-white-500 text-black-500"
+                                                >
+                                                    <IconButton className=" text-white-500">
+                                                        <i className="ri-instagram-fill ri-lg"></i>
+                                                    </IconButton>
+                                                </Tooltip>
+                                            </a>
+                                            <a href="#">
+                                                <Tooltip
+                                                    content="Share with Twitter"
+                                                    placement="bottom"
+                                                    animate={{
+                                                        mount: { scale: 1, y: 0 },
+                                                        unmount: { scale: 0, y: -15 },
+                                                    }}
+                                                    className="bg-white-500 text-black-500"
+                                                >
+                                                    <IconButton className=" text-white-500">
+                                                        <i className="ri-twitter-fill ri-lg"></i>
+                                                    </IconButton>
+                                                </Tooltip>
+                                            </a>
+                                        </div>
+                                    </MenuList>
+                                </Menu>
+                            </div>
+                        </article>
                     </li>
-
                     <li>
-                        <a href="#" className="block overflow-hidden group">
-                            <img
-                                src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                                alt=""
-                                className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-                            />
-
-                            <div className="relative pt-3 bg-white">
-                                <h3 className="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-                                    Basic Tee
-                                </h3>
-
-                                <p className="mt-2">
-                                    <span className="sr-only"> Regular Price </span>
-
-                                    <span className="tracking-wider text-gray-900"> £24.00 GBP </span>
-                                </p>
+                        <article className="w-full overflow-hidden border bg-white-500/5 border-white-500/20 rounded-3xl">
+                            <div>
+                                <img src="/src/assets/images/norbert-kowalczyk-uEyejonvHoI-unsplash.jpg" alt="" className="object-cover w-full h-56 transition duration-500 rounded-t-3xl" />
                             </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" className="block overflow-hidden group">
-                            <img
-                                src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                                alt=""
-                                className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-                            />
-
-                            <div className="relative pt-3 bg-white">
-                                <h3 className="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-                                    Basic Tee
-                                </h3>
-
-                                <p className="mt-2">
-                                    <span className="sr-only"> Regular Price </span>
-
-                                    <span className="tracking-wider text-gray-900"> £24.00 GBP </span>
-                                </p>
+                            <div className="flex flex-col gap-3 p-4 font-nunito">
+                                <p className="text-sm tracking-wide leading-[110%] text-white-700 font-light">Thursday, Jan 26 2024</p>
+                                <title className="text-xl font-bold font-dm leading-[130%] line-clamp-3 text-white-500 tracking-wide">Blockchain Beyond Cryptocurrency: Exploring the Diverse Applications of Distributed Ledger Technology</title>
+                                <p className="line-clamp-2 text-sm tracking-wide leading-[130%] text-white-700 font-light">Beyond Bitcoin, blockchain technology is disrupting industries such as finance, healthcare, and supply chain management. Uncover the diverse applications of decentralized and secure ledgers, and understand how blockchain is reshaping the way we handle transactions and data.</p>
                             </div>
-                        </a>
+                            <div className="flex flex-row items-center justify-between p-4">
+                                <div className="flex flex-row items-center gap-4">
+                                    <img src="/src/assets/images/norbert-kowalczyk-uEyejonvHoI-unsplash.jpg" alt="" className="object-cover w-10 h-10 rounded-full" />
+                                    <div className="flex flex-col gap-2 font-nunito">
+                                        <p className="text-sm tracking-wide leading-[110%] text-white-700 font-light">Written by</p>
+                                        <h1 className="text-base tracking-wide leading-[110%] text-white-500 font-semibold">Peter Thornton</h1>
+                                    </div>
+                                </div>
+                                <Menu placement="top-end">
+                                    <MenuHandler>
+                                        <IconButton className="text-white-500 bg-white-500/5">
+                                            <i className="ri-share-line ri-xl"></i>
+                                        </IconButton>
+                                    </MenuHandler>
+                                    <MenuList className="flex flex-col gap-2 shadow-md text-black-500 bg-white-500 rounded-xl">
+                                        <a href="#">
+                                            <Button className="flex items-center w-full gap-2 text-white-500">
+                                                <i className="ri-link ri-lg"></i>
+                                                <p>Copy link</p>
+                                            </Button>
+                                        </a>
+                                        <div className="flex items-center justify-between">
+                                            <a href="#">
+                                                <Tooltip
+                                                    content="Share with Facebook"
+                                                    placement="bottom"
+                                                    animate={{
+                                                        mount: { scale: 1, y: 0 },
+                                                        unmount: { scale: 0, y: -15 },
+                                                    }}
+                                                    className="bg-white-500 text-black-500"
+                                                >
+                                                    <IconButton className=" text-white-500">
+                                                        <i className="ri-facebook-fill ri-lg"></i>
+                                                    </IconButton>
+                                                </Tooltip>
+                                            </a>
+                                            <a href="#">
+                                                <Tooltip
+                                                    content="Share with Instagram"
+                                                    placement="bottom"
+                                                    animate={{
+                                                        mount: { scale: 1, y: 0 },
+                                                        unmount: { scale: 0, y: -15 },
+                                                    }}
+                                                    className="bg-white-500 text-black-500"
+                                                >
+                                                    <IconButton className=" text-white-500">
+                                                        <i className="ri-instagram-fill ri-lg"></i>
+                                                    </IconButton>
+                                                </Tooltip>
+                                            </a>
+                                            <a href="#">
+                                                <Tooltip
+                                                    content="Share with Twitter"
+                                                    placement="bottom"
+                                                    animate={{
+                                                        mount: { scale: 1, y: 0 },
+                                                        unmount: { scale: 0, y: -15 },
+                                                    }}
+                                                    className="bg-white-500 text-black-500"
+                                                >
+                                                    <IconButton className=" text-white-500">
+                                                        <i className="ri-twitter-fill ri-lg"></i>
+                                                    </IconButton>
+                                                </Tooltip>
+                                            </a>
+                                        </div>
+                                    </MenuList>
+                                </Menu>
+                            </div>
+                        </article>
                     </li>
                 </ul>
             </section>
+
+            {/* Section 5 */}
+            <section className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+                <InfiniteSlider />
+            </section>
+
+
+
             {/* <Featured />
             <div className="py-40 ">
                 <AllBlogs />
