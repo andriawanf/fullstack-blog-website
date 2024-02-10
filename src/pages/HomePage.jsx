@@ -9,7 +9,7 @@ import ContactUs from "../components/ContactUs";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { useContext } from "react";
 import InfinityScrollHorizontal from "../components/InfinityScrollHorizontal";
-import productSlider from "../data/data.js";
+import {productSlider} from "../data/data.js";
 import CardFeatureSlider from "../components/CardFeatureSlider";
 import {
     Button,
@@ -26,7 +26,6 @@ import InfiniteSlider from "../components/ui/InfiniteSlider";
 
 function HomePage() {
     // const { theme } = useContext(ThemeContext);
-
 
     return (
         <>
@@ -374,8 +373,10 @@ function HomePage() {
             </section>
 
             {/* Section 5 */}
-            <section className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-                <InfiniteSlider />
+            <section className="w-full flex flex-col [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+                <InfiniteSlider baseVelocity={-5} >simple & effortless</InfiniteSlider>
+                <InfiniteSlider baseVelocity={5} >Quick Blog Crafting</InfiniteSlider>
+                <InfiniteSlider baseVelocity={-5} >Smart suggestions</InfiniteSlider>
             </section>
 
 
