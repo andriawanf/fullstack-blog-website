@@ -17,31 +17,39 @@ import Navbar from "./layouts/Navbar";
 import Footers from "./components/footer/Footers";
 import PageContainer from "./layouts/PageContainer";
 import OnlyAdminPrivateRoute from "./components/OnlyAdminPrivateRoute";
+import { AnimatePresence } from "framer-motion";
+import Header from "./components/header/Header";
 
 function App() {
 
   return (
-    <main className="w-full min-h-screen overflow-hidden bg-black-500">
-          <BlogsContext>
-            <Router>
-              <PageContainer>
-                <Navbar />
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/signin" element={<SignIn />} />
-                  <Route path="/signup" element={<Signup />} />
-                  <Route path="/blog" element={<Index />} />
-                  <Route element={<OnlyAdminPrivateRoute />} >
-                    <Route path="/blog/write" element={<WriteBlog />} />
-                  </Route>
-                  <Route path="/blog/:blogSlug" element={<BlogPage />} />
-                  <Route path="/settings" element={<Settings />} />
-                  <Route path="*" element={<PageNotFound404 />} />
-                </Routes>
-                <Footers />
-              </PageContainer>
-            </Router>
-          </BlogsContext>
+    <main className="">
+      <AnimatePresence mode="wait">
+        <BlogsContext>
+          <Router>
+            <Header />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+            </Routes>
+            {/* <PageContainer>
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/blog" element={<Index />} />
+                <Route element={<OnlyAdminPrivateRoute />} >
+                  <Route path="/blog/write" element={<WriteBlog />} />
+                </Route>
+                <Route path="/blog/:blogSlug" element={<BlogPage />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="*" element={<PageNotFound404 />} />
+              </Routes>
+              <Footers />
+            </PageContainer> */}
+          </Router>
+        </BlogsContext>
+      </AnimatePresence>
       {/* <ThemeContextProvider>
         <ThemeProvider>
         </ThemeProvider>

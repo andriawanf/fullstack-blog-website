@@ -41,10 +41,10 @@ function InfiniteSlider({ children, baseVelocity = 100 }) {
     return (
         <>
             <div className="flex m-0 overflow-hidden leading-relaxed tracking-wide whitespace-nowrap flex-nowrap">
-                <motion.div className="flex font-extrabold uppercase text-white-500 font-nunito text-9xl whitespace-nowrap flex-nowrap" style={{ x }}>
-                    <span className="block mr-8">{children} </span>
+                <motion.div className="flex font-extrabold uppercase text-white-500 font-nunito text-8xl whitespace-nowrap flex-nowrap" style={{ x }}>
                     <span className="block mr-8 text-marquee">{children} </span>
-                    <span className="block mr-8">{children} </span>
+                    <span className="block mr-8 text-marquee">{children} </span>
+                    <span className="block mr-8 text-marquee">{children} </span>
                     <span className="block mr-8 text-marquee">{children} </span>
                 </motion.div>
             </div>

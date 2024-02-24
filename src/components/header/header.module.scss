@@ -1,0 +1,13 @@
+.header{
+    position: fixed;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%, 2%);
+    // background-color:#4a879a;
+    .menu{  
+        width: 350px;
+        height: 600px;
+        border-radius: 25px;
+        position: relative;
+    }
+}
