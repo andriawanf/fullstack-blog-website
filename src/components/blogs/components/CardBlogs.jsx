@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "@material-tailwind/react";
 import Card from "./Card";
+import { useContext } from "react";
+import { AllBlogsContext } from "../../../contexts/BlogsContext";
 
 export const CardBlogs = ({
-    items,
     className,
 }) => {
+    const {blogs} = useContext(AllBlogsContext);
     let [hoveredIndex, setHoveredIndex] = useState(null);
 
     return (
@@ -21,7 +23,7 @@ export const CardBlogs = ({
                         Unearth captivating content and stay in the loop with the latest trends. Your favorite blogs, all in one place.
                     </p>
                 </div>
-                <Button variant="filled" size="lg" className="flex items-center justify-center w-full gap-2 xl:w-fit text-white-500 font-nunito font-semibold rounded-full bg-black-500  border-t border-white-500/10 border-l hover:bg-black-400/25 hover:backdrop-blur-xl">
+                <Button variant="filled" size="lg" className="flex items-center justify-center w-full gap-2 font-semibold border-t border-l rounded-full xl:w-fit text-white-500 font-nunito bg-black-500 border-white-500/10 hover:bg-black-400/25 hover:backdrop-blur-xl">
                     Read More
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -45,11 +47,11 @@ export const CardBlogs = ({
                     className
                 )}
             >
-                {items.map((item, idx) => (
+                {blogs.map((item, idx) => (
                     <Link
                         to="/"
-                        key={item?.link}
-                        className="relative group  block p-2 h-full w-full"
+                        key={item?.slug}
+                        className="relative block w-full h-full p-2 group"
                         onMouseEnter={() => setHoveredIndex(idx)}
                         onMouseLeave={() => setHoveredIndex(null)}
                     >
@@ -91,7 +93,7 @@ export const CardBlogs = ({
 //             )}
 //         >
 //             <div className="w-full ">
-//                 <img src="/src/assets/images/image-(1).png" alt="" className="w-full h-56 object-cover rounded-xl xl:rounded-3xl" />
+//                 <img src="/src/assets/images/image-(1).png" alt="" className="object-cover w-full h-56 rounded-xl xl:rounded-3xl" />
 //             </div>
 //             <div className="relative z-50">
 //                 <h4 className={cn("text-white-500 font-bold font-dm text-2xl line-clamp-2 tracking-wide mt-4", className)}>

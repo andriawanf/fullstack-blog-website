@@ -9,17 +9,15 @@ const menu = {
     open: {
         width: "350px",
         height: "600px",
-        top: "0%",
+        top: "20px",
         right: "0px",
-        transform: "translate(-50%, 0%)",
         transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1] }
     },
     closed: {
         width: "100px",
-        height: "45px",
-        top: "0%",
-        left: "50%",
-        transform: "translate(-50%, 0%)",
+        height: "40px",
+        top: "4px",
+        right: "0px",
         transition: { duration: 0.75, delay: 0.35, type: "tween", ease: [0.76, 0, 0.24, 1] }
     }
 }
@@ -27,6 +25,7 @@ const menu = {
 export default function Header() {
     const [isActive, setIsActive] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isLogin, setIsLogin] = useState(true);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -48,7 +47,7 @@ export default function Header() {
     }, []);
 
     return (
-        <motion.div className={`fixed top-0 left-0 flex justify-between w-full py-4 px-16 items-center z-50 transition-all duration-150  ${isScrolled ? "bg-black-500 shadow-md shadow-white-500/5" : ""}`}
+        <motion.div className={`sticky top-0 left-0 flex justify-end xl:justify-between w-full  py-4 xl:px-16 px-3 items-center z-50 transition-all duration-150  ${isScrolled ? "bg-black-500/25 backdrop-blur-sm shadow-md shadow-white-500/5" : ""}`}
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ type: "spring", bounce: 0.25 }}
@@ -56,25 +55,31 @@ export default function Header() {
             <div className='hidden lg:block'>
                 <h1 className='text-2xl font-bold text-transparent uppercase font-nunito bg-clip-text bg-gradient-to-r from-blueDark-500 to-blueLight-500'>OutoftheBoys</h1>
             </div>
-            <div className={styles.header}>
-                <motion.div
-                    className={`w-[350px] h-[600px] relative rounded-3xl bg-white-500/5 backdrop-blur-xl border border-white-500/10`}
-                    variants={menu}
-                    animate={isActive ? "open" : "closed"}
-                    initial="closed"
-                >
-                    <AnimatePresence>
-                        {isActive && <Nav />}
-                    </AnimatePresence>
-                </motion.div>
-            </div>
-            <Button isActive={isActive} toggleMenu={() => { setIsActive(!isActive) }} />
-            <div className='hidden text-white-500 lg:flex lg:gap-1 lg:items-center'>
-                <IconButton className='border-t border-l rounded-full font-nunito bg-black-500 border-white-500/10 hover:bg-black-400/25 hover:backdrop-blur-xl' size='lg' variant="filled">
-                    <i className="ri-sun-line ri-lg text-white-500"></i>
-                </IconButton>
-                <ButtonAuth className='font-semibold border-t border-l rounded-full font-nunito bg-black-500 border-white-500/10 hover:bg-black-400/25 hover:backdrop-blur-xl' size='lg'>Login</ButtonAuth>
-            </div>
+            {isLogin ? (
+                <div className='relative flex items-center gap-2 w-fit'>
+                    <IconButton className='border-t border-l rounded-full font-nunito bg-black-500 border-white-500/10 hover:bg-black-400/25 hover:backdrop-blur-xl' size='lg' variant="filled">
+                        <i className="ri-sun-line ri-lg text-white-500"></i>
+                    </IconButton>
+                    <Button isActive={isActive} toggleMenu={() => { setIsActive(!isActive) }} />
+                    <motion.div
+                        className={`absolute top-0 right-0 bg-black-500 border border-white-500/15 rounded-3xl`}
+                        variants={menu}
+                        animate={isActive ? "open" : "closed"}
+                        initial="closed"
+                    >
+                        <AnimatePresence>
+                            {isActive && <Nav />}
+                        </AnimatePresence>
+                    </motion.div>
+                </div>
+            ) : (
+                <div className='flex items-center gap-1 text-white-500'>
+                    <IconButton className='border-t border-l rounded-full font-nunito bg-black-500 border-white-500/10 hover:bg-black-400/25 hover:backdrop-blur-xl' size='lg' variant="filled">
+                        <i className="ri-sun-line ri-lg text-white-500"></i>
+                    </IconButton>
+                    <ButtonAuth className='font-semibold border-t border-l rounded-full font-nunito bg-black-500 border-white-500/10 hover:bg-black-400/25 hover:backdrop-blur-xl' size='lg'>Login</ButtonAuth>
+                </div>
+            )}
         </motion.div>
     )
 }

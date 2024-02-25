@@ -26,33 +26,13 @@ import Featured from "../components/featured/Featured";
 import Steps from "../components/steps/Steps";
 import { CardBlogs } from "../components/blogs/components/CardBlogs";
 import contents from "../components/blogs/data.js";
+import { AllBlogsContext } from "../contexts/BlogsContext";
 
 
-const content = [
-    {
-        title: "Collaborative Editing",
-        description:
-            "Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.",
-    },
-    {
-        title: "Real time changes",
-        description:
-            "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
-    },
-    {
-        title: "Version control",
-        description:
-            "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
-    },
-    {
-        title: "Running out of content",
-        description:
-            "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
-    },
-];
 
 
 function HomePage() {
+    // const {currentPost} = useContext(AllBlogsContext);
     // const { theme } = useContext(ThemeContext);
     useEffect(() => {
         const lenis = new Lenis()
@@ -65,13 +45,13 @@ function HomePage() {
 
     return (
         <>
-            <section className="relative bg-black-500 pt-28">
-                <img src="/download (1).png" alt="bg-hero" className="absolute top-0 w-full h-full rounded-[3rem] left-0 opacity-30" />
+            <img src="/download (1).png" alt="bg-hero" className="absolute top-0 w-full h-full rounded-[3rem] left-0 opacity-30 z-10" />
+            <section className="relative z-10 pt-16">
                 <HeroSection />
             </section>
 
             {/* Infinite Scroll Horizontal Logo */}
-            <div className="bg-black-500">
+            <div className="">
                 <div className="flex flex-col gap-5 pt-8 md:pt-12 lg:gap-7 xl:pt-16 xl:gap-10">
                     <p className="text-[8px] md:text-xs xl:text-lg text-center font-nunito text-white-700 font-light leading-relaxed">Crafting a masterpiece requires wielding more than 10 captivating tools of creativity.</p>
                     <div className="w-full mx-auto">
@@ -92,16 +72,16 @@ function HomePage() {
                 </div>
             </div>
 
-            <section className="pt-24 bg-black-500">
+            <section className="pt-24 ">
                 <Featured />
             </section>
 
-            <section className="px-16 py-16 bg-black-500">
+            <section className="px-16 py-16 ">
                 <Steps />
             </section>
 
-            <section className="px-16 pt-16 bg-black-500">
-                <CardBlogs items={contents} />
+            <section className="px-16 pt-16 ">
+                <CardBlogs />
                 <div className="py-8 border bg-white-500/5 border-white-500/15 rounded-3xl">
                     <div className="flex flex-col items-center justify-center w-full gap-8">
                         <h1 className="max-w-6xl text-6xl font-bold text-center text-white-500 font-dm">Begin Your Blogging Journey Today!</h1>
@@ -111,7 +91,7 @@ function HomePage() {
                 </div>
             </section>
 
-            <section className="flex flex-col w-full py-16 bg-black-500">
+            <section className="flex flex-col w-full py-16 ">
                 {/* <InfiniteSlider baseVelocity={-5} >* Simple & effortless</InfiniteSlider> */}
                 <InfiniteSlider baseVelocity={3} >* Quick Blog Crafting</InfiniteSlider>
                 <InfiniteSlider baseVelocity={-3} >* Smart suggestions</InfiniteSlider>

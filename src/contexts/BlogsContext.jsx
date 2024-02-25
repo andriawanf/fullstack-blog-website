@@ -32,6 +32,7 @@ export default function BlogsContext({ children }){
         }
         fetchPosts();
     }, []);
+    console.log(blogs)
 
     if (isLoading && blogs.length === 0) {
         return <Loader />;
@@ -42,6 +43,6 @@ export default function BlogsContext({ children }){
     const currentPosts = blogs.slice(indexOfFirstPage, indexOfLastPost);
     const howManyPages = Math.ceil(blogs.length / postsPerPage);
     return (
-        <AllBlogsContext.Provider value={{currentPosts, howManyPages, setCurrentPage}} >{children}</AllBlogsContext.Provider>
+        <AllBlogsContext.Provider value={{currentPosts, howManyPages, setCurrentPage, blogs}} >{children}</AllBlogsContext.Provider>
     )
 }

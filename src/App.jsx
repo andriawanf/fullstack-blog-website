@@ -23,7 +23,7 @@ import Header from "./components/header/Header";
 function App() {
 
   return (
-    <main className="">
+    <main className="bg-black-500">
       <AnimatePresence mode="wait">
         <BlogsContext>
           <Router>
