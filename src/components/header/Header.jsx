@@ -54,7 +54,7 @@ export default function Header() {
             transition={{ type: "spring", bounce: 0.25 }}
         >
             <div className='hidden lg:block'>
-                <h1 className='font-nunito font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-blueDark-500 to-blueLight-500 uppercase'>OutoftheBoys</h1>
+                <h1 className='text-2xl font-bold text-transparent uppercase font-nunito bg-clip-text bg-gradient-to-r from-blueDark-500 to-blueLight-500'>OutoftheBoys</h1>
             </div>
             <div className={styles.header}>
                 <motion.div
@@ -69,11 +69,11 @@ export default function Header() {
                 </motion.div>
             </div>
             <Button isActive={isActive} toggleMenu={() => { setIsActive(!isActive) }} />
-            <div className='text-white-500 hidden lg:flex lg:gap-1 lg:items-center'>
-                <IconButton className='rounded-full font-nunito bg-black-500  border-t border-white-500/10 border-l hover:bg-black-400/25 hover:backdrop-blur-xl' size='lg' variant="filled">
+            <div className='hidden text-white-500 lg:flex lg:gap-1 lg:items-center'>
+                <IconButton className='border-t border-l rounded-full font-nunito bg-black-500 border-white-500/10 hover:bg-black-400/25 hover:backdrop-blur-xl' size='lg' variant="filled">
                     <i className="ri-sun-line ri-lg text-white-500"></i>
                 </IconButton>
-                <ButtonAuth className='font-nunito font-semibold rounded-full bg-black-500  border-t border-white-500/10 border-l hover:bg-black-400/25 hover:backdrop-blur-xl' size='lg'>Login</ButtonAuth>
+                <ButtonAuth className='font-semibold border-t border-l rounded-full font-nunito bg-black-500 border-white-500/10 hover:bg-black-400/25 hover:backdrop-blur-xl' size='lg'>Login</ButtonAuth>
             </div>
         </motion.div>
     )

@@ -18,7 +18,7 @@ export default function HeroSection() {
             {/* Hero section */}
             <div className="relative">
                 <div
-                    className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+                    className="absolute inset-x-0 overflow-hidden -top-40 -z-10 transform-gpu blur-3xl sm:-top-80"
                     aria-hidden="true"
                 >
                     <div
@@ -30,8 +30,8 @@ export default function HeroSection() {
                     />
                 </div>
                 <div className="py-12 sm:py-0">
-                    <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                        <div className="mx-auto max-w-5xl text-center">
+                    <div className="px-6 mx-auto max-w-7xl lg:px-8">
+                        <div className="max-w-5xl mx-auto text-center">
                             <motion.div
                                 initial="hidden"
                                 ref={ref}
@@ -62,15 +62,15 @@ export default function HeroSection() {
 
                                 <motion.div
                                     variants={FADE_DOWN_ANIMATION_VARIANTS}
-                                    className="mt-8 flex items-center justify-center gap-x-6 "
+                                    className="flex items-center justify-center mt-8 gap-x-6 "
                                 >
                                     <a href="/" className="z-50">
-                                        <Button size="lg" className="text-black-500 font-nunito font-bold bg-gradient-to-r from-blueDark-500 to-blueLight-500 rounded-full">Get started</Button>
+                                        <Button size="lg" className="font-bold rounded-full text-black-500 font-nunito bg-gradient-to-r from-blueDark-500 to-blueLight-500">Get started</Button>
                                     </a>
                                 </motion.div>
                             </motion.div>
                         </div>
-                        <div className="mt-16 flow-root sm:mt-24">
+                        <div className="flow-root mt-16 sm:mt-24">
                             <motion.div
                                 className="rounded-xl"
                                 initial={{ y: 100, opacity: 0 }} // Image starts from 100px below and fully transparent
@@ -86,7 +86,7 @@ export default function HeroSection() {
                                     >
                                         <div className="rounded-xl w-full border border-white-500/10 lg:rounded-[2rem] lg:p-0.5 hover:shadow-xl hover:shadow-white-500/5 transition-all duration-150 ease-in">
                                             {/* <VariantCarousel /> */}
-                                            <img src="/img-hero.png" alt="" className="w-full object-cover" />
+                                            <img src="/img-hero.png" alt="" className="object-cover w-full" />
                                         </div>
                                     </motion.div>
                                 </AnimatePresence>

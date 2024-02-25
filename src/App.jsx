@@ -31,6 +31,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
             </Routes>
+            <Footers />
             {/* <PageContainer>
               <Navbar />
               <Routes>
@@ -45,7 +46,6 @@ function App() {
                 <Route path="/settings" element={<Settings />} />
                 <Route path="*" element={<PageNotFound404 />} />
               </Routes>
-              <Footers />
             </PageContainer> */}
           </Router>
         </BlogsContext>

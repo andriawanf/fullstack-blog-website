@@ -35,7 +35,7 @@ function Steps() {
                 }}
                 className='sticky top-24 h-[50vh]'
             >
-                <div className=" text-center text-white-500">
+                <div className="text-center text-white-500">
                     <motion.h1
                         variants={FADE_UP_ANIMATION_VARIANTS}
                         className="mt-2 tracking-tight font-dm justify-center block  text-3xl md:text-4xl xl:text-6xl font-bold xl:leading-[4.5rem] text-white-500 mx-auto"
@@ -44,13 +44,13 @@ function Steps() {
                     </motion.h1>
                     <motion.p
                         variants={FADE_UP_ANIMATION_VARIANTS}
-                        className="mt-2 text-lg leading-8 font-nunito max-w-lg mx-auto text-white-700"
+                        className="max-w-lg mx-auto mt-2 text-lg leading-8 font-nunito text-white-700"
                     >
                         The fastest and easiest way to get a blog content for your business without having to manage it
                     </motion.p>
                 </div>
             </motion.div>
-            <div className='max-w-6xl relative mx-auto'>
+            <div className='relative max-w-6xl mx-auto'>
                 {
                     projects.map((project, i) => {
                         const targetScale = 1 - ((projects.length - i) * 0.05);

@@ -92,26 +92,29 @@ function HomePage() {
                 </div>
             </div>
 
-            <section className="bg-black-500 pt-24">
+            <section className="pt-24 bg-black-500">
                 <Featured />
             </section>
 
-            <section className="bg-black-500 py-16 px-16">
+            <section className="px-16 py-16 bg-black-500">
                 <Steps />
             </section>
 
-            <section className="bg-black-500 px-16 pt-40">
+            <section className="px-16 pt-16 bg-black-500">
                 <CardBlogs items={contents} />
+                <div className="py-8 border bg-white-500/5 border-white-500/15 rounded-3xl">
+                    <div className="flex flex-col items-center justify-center w-full gap-8">
+                        <h1 className="max-w-6xl text-6xl font-bold text-center text-white-500 font-dm">Begin Your Blogging Journey Today!</h1>
+                        <p className="text-lg font-normal font-nunito text-white-700">The sooner you start, the better the results!</p>
+                        <Button size="lg" variant="filled" className="rounded-full font-nunito bg-white-500 hover:bg-white-700">Create Blog</Button>
+                    </div>
+                </div>
             </section>
 
-            <section className="bg-black-500">
-                
-            </section>
-
-            <section className="w-full flex flex-col bg-black-500">
+            <section className="flex flex-col w-full py-16 bg-black-500">
                 {/* <InfiniteSlider baseVelocity={-5} >* Simple & effortless</InfiniteSlider> */}
-                <InfiniteSlider baseVelocity={4} >* Quick Blog Crafting</InfiniteSlider>
-                <InfiniteSlider baseVelocity={-4} >* Smart suggestions</InfiniteSlider>
+                <InfiniteSlider baseVelocity={3} >* Quick Blog Crafting</InfiniteSlider>
+                <InfiniteSlider baseVelocity={-3} >* Smart suggestions</InfiniteSlider>
             </section>
         </>
     )
