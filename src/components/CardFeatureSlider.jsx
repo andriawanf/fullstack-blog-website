@@ -28,7 +28,7 @@ function CardFeatureSlider() {
                     }}
                     transition={{ duration: 1, type: "spring", staggerChildren: index * 1.5, delay: 0.5 }}
                     viewport={{ once: false }}
-                    className="relative w-full h-72 xl:w-[400px] xl:h-[400px] rounded-3xl xl:rounded-[50px] p-6 xl:p-8 flex flex-col gap-4 xl:gap-6 justify-center items-center bg-white-500/5 border border-white-500/20 overflow-hidden"
+                    className="relative w-full h-56 xl:w-[400px] xl:h-[400px] rounded-3xl xl:rounded-[50px] p-6 xl:p-8 flex flex-col gap-4 xl:gap-6 justify-center items-center bg-white-500/5 border border-white-500/20 overflow-hidden"
                 >
                     <div className="absolute w-32 h-32 rounded-full top-14 right-4 bg-blueLight-500 blur-[100px]"></div>
 

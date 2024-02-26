@@ -20,7 +20,7 @@ function Steps() {
 
     
     return (
-        <div ref={stepsRef} className="py-8">
+        <div ref={stepsRef} className="py-4 lg:py-8">
             <motion.div
                 initial="hidden"
                 animate={isInView ? "show" : "hidden"}
@@ -38,19 +38,19 @@ function Steps() {
                 <div className="text-center text-white-500">
                     <motion.h1
                         variants={FADE_UP_ANIMATION_VARIANTS}
-                        className="mt-2 tracking-tight font-dm justify-center block  text-3xl md:text-4xl xl:text-6xl font-bold xl:leading-[4.5rem] text-white-500 mx-auto"
+                        className="mt-2 tracking-tight font-dm justify-center block text-3xl lg:text-5xl xl:text-6xl font-bold lg:leading-[120%] text-white-500 mx-auto"
                     >
                         Unlock the feature now!
                     </motion.h1>
                     <motion.p
                         variants={FADE_UP_ANIMATION_VARIANTS}
-                        className="max-w-lg mx-auto mt-2 text-lg leading-8 font-nunito text-white-700"
+                        className="max-w-xs mx-auto mt-2 text-base leading-tight lg:max-w-lg lg:text-lg lg:leading-[110%] font-nunito text-white-700"
                     >
                         The fastest and easiest way to get a blog content for your business without having to manage it
                     </motion.p>
                 </div>
             </motion.div>
-            <div className='relative max-w-6xl mx-auto'>
+            <div className='relative max-w-2xl mx-auto lg:max-w-6xl'>
                 {
                     projects.map((project, i) => {
                         const targetScale = 1 - ((projects.length - i) * 0.05);

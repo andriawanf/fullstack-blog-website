@@ -14,20 +14,20 @@ const Card = ({ i, title, description, src, url, color, progress, range, targetS
     const scale = useTransform(progress, range, [1, targetScale]);
 
     return (
-        <div ref={container} className={`${styles.cardContainer}`}>
+        <div ref={container} className={`${styles.cardContainer} top-[50%] md:top-[63%] lg:top-[30%] xl:top-[44%]`}>
             <motion.div
                 style={{ scale, top: `calc(-5vh + ${i * 25}px)` }}
                 className={`${styles.card} bg-white-500/5 border border-white-500/15 backdrop-blur-2xl text-white-500 shadow-xl shadow-white-500/5`}
             >
-                <div className="flex items-center justify-between w-full">
-                    <div className="space-y-3">
-                        <h2 className='text-5xl font-bold font-dm'>{title}</h2>
-                        <p className='text-lg font-nunito font-normal leading-6 max-w-lg text-white-700'>{description}</p>
+                <div className="flex flex-col items-center justify-between w-full lg:flex-row">
+                    <div className="space-y-2 pt-11 lg:space-y-3 lg:pt-0">
+                        <h2 className='text-3xl font-bold lg:text-4xl xl:text-5xl font-dm'>{title}</h2>
+                        <p className='max-w-sm text-base font-normal leading-[110%] lg:max-w-lg lg:text-lg font-nunito text-white-700'>{description}</p>
                     </div>
 
                     <div className={styles.imageContainer}>
                         <motion.div
-                            className="w-[450px]"
+                            className="w-full xl:w-[450px]"
                             style={{ scale: imageScale }}
                         >
                             <img

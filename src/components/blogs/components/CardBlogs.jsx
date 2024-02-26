@@ -14,16 +14,16 @@ export const CardBlogs = ({
     let [hoveredIndex, setHoveredIndex] = useState(null);
 
     return (
-        <div className="py-8">
-            <header className="flex flex-col items-end justify-between w-full gap-2 xl:flex-row">
+        <div className="py-4 lg:py-8">
+            <header className="flex flex-col items-start justify-between w-full gap-6 md:items-end xl:gap-0 md:flex-row">
                 <div>
-                    <h2 className="xl:max-w-3xl text-3xl md:text-4xl md:max-w-lg xl:text-6xl font-bold xl:leading-[4.5rem] font-dm text-white-500">Discover Blogs</h2>
+                    <h2 className="lg:max-w-3xl text-3xl max-w-lg lg:text-5xl xl:text-6xl font-bold lg:leading-[120%] font-dm text-white-500">Discover Blogs</h2>
 
-                    <p className="max-w-md mt-4 font-light text-white-700">
+                    <p className="mt-2 text-base font-light leading-[110%] lg:text-lg md:max-w-sm lg:max-w-md lg:mt-4 text-white-700">
                         Unearth captivating content and stay in the loop with the latest trends. Your favorite blogs, all in one place.
                     </p>
                 </div>
-                <Button variant="filled" size="lg" className="flex items-center justify-center w-full gap-2 font-semibold border-t border-l rounded-full xl:w-fit text-white-500 font-nunito bg-black-500 border-white-500/10 hover:bg-black-400/25 hover:backdrop-blur-xl">
+                <Button variant="filled" size="lg" className="flex items-center justify-center w-full gap-2 font-semibold border-t border-l rounded-full md:w-fit text-white-500 font-nunito bg-black-500 border-white-500/10 hover:bg-black-400/25 hover:backdrop-blur-xl">
                     Read More
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ export const CardBlogs = ({
             </header>
             <div
                 className={cn(
-                    "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  pt-12",
+                    "grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3  pt-12",
                     className
                 )}
             >

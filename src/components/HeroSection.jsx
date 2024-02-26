@@ -18,7 +18,7 @@ export default function HeroSection() {
             {/* Hero section */}
             <div className="relative">
                 <div
-                    className="absolute inset-x-0 overflow-hidden -top-40 -z-10 transform-gpu blur-3xl sm:-top-80"
+                    className="absolute inset-x-0 overflow-hidden -z-10 transform-gpu blur-3xl -top-80"
                     aria-hidden="true"
                 >
                     <div
@@ -29,9 +29,9 @@ export default function HeroSection() {
                         }}
                     />
                 </div>
-                <div className="py-12 sm:py-0">
-                    <div className="px-6 mx-auto max-w-7xl lg:px-8">
-                        <div className="max-w-5xl mx-auto text-center">
+                <div className="py-0 xl:py-12">
+                    <div className="px-2 mx-auto max-w-7xl lg:px-8">
+                        <div className="mx-auto text-center lg:max-w-5xl">
                             <motion.div
                                 initial="hidden"
                                 ref={ref}
@@ -48,13 +48,13 @@ export default function HeroSection() {
                             >
                                 <motion.h1
                                     variants={FADE_DOWN_ANIMATION_VARIANTS}
-                                    className="text-4xl font-bold tracking-tight sm:text-6xl font-dm text-white-500"
+                                    className="text-4xl font-bold tracking-tight lg:text-5xl xl:text-6xl font-dm text-white-500"
                                 >
                                     Empower Your Ideas with AI-Driven Blogging Solutions
                                 </motion.h1>
                                 <motion.p
                                     variants={FADE_DOWN_ANIMATION_VARIANTS}
-                                    className="mt-4 text-lg leading-8 font-nunito text-white-700"
+                                    className="max-w-sm mx-auto mt-2 text-base leading-tight lg:mt-4 lg:leading-[110%] lg:text-lg font-nunito text-white-700 lg:max-w-7xl"
                                 >
                                     A collection of handmade, free, and ready to use animations &
                                     variants for your next project.
@@ -62,7 +62,7 @@ export default function HeroSection() {
 
                                 <motion.div
                                     variants={FADE_DOWN_ANIMATION_VARIANTS}
-                                    className="flex items-center justify-center mt-8 gap-x-6 "
+                                    className="flex items-center justify-center mt-8 "
                                 >
                                     <a href="/" className="z-50">
                                         <Button size="lg" className="font-bold rounded-full text-black-500 font-nunito bg-gradient-to-r from-blueDark-500 to-blueLight-500">Get started</Button>
@@ -70,7 +70,7 @@ export default function HeroSection() {
                                 </motion.div>
                             </motion.div>
                         </div>
-                        <div className="flow-root mt-16 sm:mt-24">
+                        <div className="flow-root mt-8 xl:mt-24">
                             <motion.div
                                 className="rounded-xl"
                                 initial={{ y: 100, opacity: 0 }} // Image starts from 100px below and fully transparent

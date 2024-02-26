@@ -47,7 +47,7 @@ export default function Header() {
     }, []);
 
     return (
-        <motion.div className={`sticky top-0 left-0 flex justify-end xl:justify-between w-full  py-4 xl:px-16 px-3 items-center z-50 transition-all duration-150  ${isScrolled ? "bg-black-500/25 backdrop-blur-sm shadow-md shadow-white-500/5" : ""}`}
+        <motion.div className={`sticky top-0 left-0 flex justify-end lg:justify-between w-full py-2 lg:py-4 lg:px-16 px-2 items-center z-50 transition-all duration-150  ${isScrolled ? "bg-black-500/25 backdrop-blur-sm shadow-md shadow-white-500/5" : ""}`}
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ type: "spring", bounce: 0.25 }}
