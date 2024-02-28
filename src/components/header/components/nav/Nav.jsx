@@ -2,6 +2,7 @@ import styles from './nav.module.scss';
 import { motion } from 'framer-motion';
 import { links, footerLinks } from './data.js';
 import { perspective, slideIn } from "./anim.js";
+import { Link } from 'react-router-dom';
 
 export default function index() {
     return (

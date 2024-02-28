@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { cn } from "../../../utils/cn";
 import { format } from 'date-fns';
 
@@ -6,10 +7,11 @@ const Card = ({
     children,
     item
 }) => {
+    const {currentUser} = useSelector(state => state.user);
     return (
         <div
             className={cn(
-                "rounded-2xl xl:rounded-3xl h-full w-full p-4 overflow-hidden bg-white-500/5 border border-white-500/15 backdrop-blur-xl  relative z-20 flex flex-col gap-4 justify-between",
+                "rounded-2xl xl:rounded-3xl h-full w-full p-4 overflow-hidden bg-white-500/5 border border-white-500/15 backdrop-blur-xl relative z-20 flex flex-col gap-4 justify-between",
                 className
             )}
         >

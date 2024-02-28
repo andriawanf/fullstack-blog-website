@@ -32,7 +32,6 @@ export default function BlogsContext({ children }){
         }
         fetchPosts();
     }, []);
-    console.log(blogs)
 
     if (isLoading && blogs.length === 0) {
         return <Loader />;

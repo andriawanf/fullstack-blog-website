@@ -47,13 +47,14 @@ export default function Header() {
     }, []);
 
     return (
-        <motion.div className={`sticky top-0 left-0 flex justify-end lg:justify-between w-full py-2 lg:py-4 lg:px-16 px-2 items-center z-50 transition-all duration-150  ${isScrolled ? "bg-black-500/25 backdrop-blur-sm shadow-md shadow-white-500/5" : ""}`}
+        <motion.div className={`sticky top-0 left-0 flex justify-between w-full py-2 lg:py-4 lg:px-16 px-2 items-center z-50 transition-all duration-150  ${isScrolled ? "bg-black-500/25 backdrop-blur-sm shadow-md shadow-white-500/5" : ""}`}
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ type: "spring", bounce: 0.25 }}
         >
-            <div className='hidden lg:block'>
-                <h1 className='text-2xl font-bold text-transparent uppercase font-nunito bg-clip-text bg-gradient-to-r from-blueDark-500 to-blueLight-500'>OutoftheBoys</h1>
+            <div className='flex items-center gap-2'>
+                <img src="/src/assets/icons/logo.svg" alt="logo-website" className='w-8' />
+                <h1 className='hidden text-xl font-bold text-transparent uppercase lg:block font-dm bg-clip-text bg-gradient-to-r from-blueDark-500 to-blueLight-500'>OutOfYourBrains</h1>
             </div>
             {isLogin ? (
                 <div className='relative flex items-center gap-2 w-fit'>

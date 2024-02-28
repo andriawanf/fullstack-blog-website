@@ -19,6 +19,7 @@ import PageContainer from "./layouts/PageContainer";
 import OnlyAdminPrivateRoute from "./components/OnlyAdminPrivateRoute";
 import { AnimatePresence } from "framer-motion";
 import Header from "./components/header/Header";
+import Blogs from "./pages/Blogs";
 
 function App() {
 
@@ -30,6 +31,12 @@ function App() {
             <Header />
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/blogs" element={<Blogs />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/signin" element={<SignIn />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/blog" element={<Index />} />
+              <Route path="/blog/write" element={<WriteBlog />} />
             </Routes>
             <Footers />
             {/* <PageContainer>
