@@ -37,6 +37,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/blog" element={<Index />} />
               <Route path="/blog/write" element={<WriteBlog />} />
+              <Route path="/blog/:blogSlug" element={<BlogPage />} />
             </Routes>
             <Footers />
             {/* <PageContainer>
@@ -49,7 +50,6 @@ function App() {
                 <Route element={<OnlyAdminPrivateRoute />} >
                   <Route path="/blog/write" element={<WriteBlog />} />
                 </Route>
-                <Route path="/blog/:blogSlug" element={<BlogPage />} />
                 <Route path="/settings" element={<Settings />} />
                 <Route path="*" element={<PageNotFound404 />} />
               </Routes>
