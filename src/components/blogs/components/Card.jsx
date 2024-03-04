@@ -1,13 +1,15 @@
 import { useSelector } from "react-redux";
 import { cn } from "../../../utils/cn";
 import { format } from 'date-fns';
+import { Chip } from "@material-tailwind/react";
+import { FormatDates } from "../../../lib/FormatDates";
 
 const Card = ({
     className,
     children,
     item
 }) => {
-    const {currentUser} = useSelector(state => state.user);
+    const { currentUser } = useSelector(state => state.user);
     return (
         <div
             className={cn(
@@ -16,18 +18,17 @@ const Card = ({
             )}
         >
             <div>
-                <div className="w-full ">
+                <div className="w-full">
                     <img src={item.imageContent} alt="" className="object-cover w-full h-56 rounded-xl xl:rounded-xl" />
                 </div>
                 <div className="relative z-50 flex flex-col gap-2 mt-4">
-                    <p
-                        className={cn(
-                            " text-white-700 tracking-wide leading-relaxed text-sm font-nunito line-clamp-3",
-                            className
-                        )}
-                    >
-                        {format(new Date(item.createdAt), "dd-MMM-yyyy")}
-                    </p>
+                    <div className="flex items-center gap-2">
+                        <div className="text-white-700 tracking-wide leading-relaxed text-sm font-nunito">
+                            <FormatDates createdAt={item.createdAt} />
+                        </div>
+                        <div className="h-1.5 w-1.5 bg-white-500/10 rounded-full"></div>
+                        <Chip size="sm" value={item.category} className="bg-white-500/10 text-white-500 capitalize font-normal font-nunito rounded-lg" />
+                    </div>
                     <h4 className={cn("text-white-500 font-bold font-dm text-2xl line-clamp-2 tracking-wide ", className)}>
                         {item.title}
                     </h4>
