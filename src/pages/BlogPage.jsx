@@ -3,11 +3,21 @@ import PageContainer from '../layouts/PageContainer'
 import Navbar from '../layouts/Navbar'
 import Footers from '../components/footer/Footers'
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useEffect } from 'react';
+import dompurify from "dompurify";
 import Card from '../components/ui/Card';
 import { format } from 'date-fns';
+import { FormatDates } from '../lib/FormatDates';
+import {
+    Chip,
+    Menu,
+    MenuHandler,
+    MenuList,
+    MenuItem,
+    IconButton,
+    Button,
+} from "@material-tailwind/react";
 
 function BlogPage() {
     const { blogSlug } = useParams();
@@ -54,64 +64,53 @@ function BlogPage() {
         }
     }, []);
 
+    const cleanHTML = (html) => {
+        return dompurify.sanitize(html);
+    };
+
     return (
-        <main className="mt-10">
-            <div className="relative w-full mx-auto mb-4 md:mb-0">
-                <div className="flex flex-col items-center justify-center w-full px-4 lg:px-0 ">
-                    <a
-                        href="#"
-                        className="inline-flex items-center justify-center mb-3 text-primaryDark font-dm"
-                    >
-                        {post && post.category}
-                    </a>
-                    <h2 className="max-w-5xl mb-12 text-4xl font-bold leading-tight text-center font-dm">
-                        {post && post.title}
-                    </h2>
+        <section className="w-full min-h-screen px-2 py-8 lg:px-8 xl:px-16 lg:py-16 bg-black-500">
+            <div className='flex flex-col text-start'>
+                <div className='flex gap-2 items-center'>
+                    <p className="font-nunito bg-white-500/10 text-xs md:text-sm font-medium leading-[110%] text-white-700 capitalize rounded-full w-fit px-3 py-1.5">{post && <FormatDates createdAt={post.createdAt} />}</p>
+                    <div className="w-2 h-2 bg-white-700 rounded-full"></div>
+                    <Chip size="sm" value={post && post?.category} className="font-nunito bg-white-500/10 text-xs md:text-sm font-medium leading-[110%] text-white-700 capitalize rounded-full w-fit px-3 py-1.5" />
                 </div>
-
-                <img src={post && post.imageContent} className="object-cover w-full lg:rounded-2xl h-80" />
+                <h1 className="mt-4 text-3xl max-w-screen-md lg:text-5xl xl:text-6xl font-bold leading-[120%] font-dm text-white-500">{post && post.title}</h1>
             </div>
-
-            <div className="flex flex-col font-medium lg:flex-row lg:space-x-12 font-nunito">
-
-                <div className="w-full px-4 mt-12  leading-relaxed lg:px-0 lg:w-3/4">
-                    <div className="pb-6 text-lg text-justify prose max-w-7xl leading-relaxed" dangerouslySetInnerHTML={{ __html: post && post.content }}></div>
-                </div>
-
-                <div className="w-full max-w-screen-sm m-auto mt-12 lg:w-1/4">
-                    <div className="p-4 border-t border-b md:border md:rounded">
-                        <div className="flex py-2">
-                            <img src="https://randomuser.me/api/portraits/men/97.jpg"
-                                className="object-cover w-10 h-10 mr-2 rounded-full" />
-                            <div>
-                                <p className="text-sm font-semibold text-gray-700"> Mike Sullivan </p>
-                                <p className="text-xs font-semibold text-gray-600"> Editor </p>
-                            </div>
-                        </div>
-                        <p className="py-3 text-gray-700">
-                            Mike writes about technology
-                            Yourself required no at thoughts delicate landlord it be. Branched dashwood do is whatever it.
-                        </p>
-                        <button className="flex items-center justify-center w-full px-2 py-1 text-gray-100 bg-green-700 rounded">
-                            Follow
-                            <i className='ml-2 bx bx-user-plus' ></i>
-                        </button>
+            <>
+                <img
+                    className="h-96 w-full object-cover object-center rounded-3xl mt-8 md:mt-12"
+                    src={post && post.imageContent}
+                    alt="nature image"
+                />
+            </>
+            <div className='mt-8 pb-8 md:mt-12 md:pb-12 border-b border-b-white-500/15 flex flex-row justify-between items-end'>
+                <div className="flex items-center gap-2 md:gap-3">
+                    <img src="https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80" alt="user-profile" className='h-9 w-9 md:w-12 md:h-12 object-cover object-center rounded-3xl' />
+                    <div>
+                        <h1 className='text-white-500 font-nunito font-medium text-sm md:text-lg'>{post && post.author}</h1>
+                        <p className='text-xs md:text-base font-nunito font-normal text-white-800'>email@gmail.com</p>
                     </div>
                 </div>
-            </div>
-            <div className='flex flex-col items-center justify-center mb-5'>
-                <h1 className='mt-5 text-xl font-semibold font-dm'>Recent articles</h1>
-                <div className="grid gap-4 mt-5 sm:grid-cols-2 lg:grid-cols-3">
-                    {recentPosts &&
-                        recentPosts.map((post) =>
-                            <div key={post.id}>
-                                <Card description={post.description} title={post.title} image={post.imageContent} createdAt={format(new Date(post.createdAt), "do MMM yyyy")} category={post.category} slug={post.slug} />
-                            </div>
-                        )
-                    }
+                <div className="flex items-center gap-2">
+                    <IconButton className='rounded-full bg-white-500/10'>
+                        <i className="ri-heart-3-fill ri-xl text-red-600"></i>
+                    </IconButton>
+                    <>
+                        <Button ripple={true} size='sm' className='hidden md:block capitalize text-sm font-nunito font-medium text-white-500 bg-white-500/10 rounded-full'>Copy link</Button>
+                        <IconButton className='rounded-full bg-white-500/10 block md:hidden'>
+                            <i className="ri-file-copy-fill ri-xl text-white-600"></i>
+                        </IconButton>
+                    </>
                 </div>
             </div>
-        </main>
+            <div className='mt-12 w-full'>
+                <article className="prose-base md:prose-xl prose-ol:list-decimal prose-ul:list-disc text-white-700 font-nunito font-light leading-[160%] prose-h1:font-semibold prose-h1:text-white-500 prose-h2:font-semibold prose-h2:text-white-500 prose-h3:font-medium prose-h3:text-white-500 prose-h4:font-medium prose-h4:text-white-500 prose-h5:font-medium prose-h5:text-white-500 prose-h6:font-medium prose-h6:text-white-500 prose-strong:font-bold prose-strong:text-white-500 prose-blockquote:border-l-2 prose-blockquote:border-l-white-500 prose-pre:bg-white-500/10 prose-pre:rounded-3xl prose-pre:text-sm md:prose-pre:text-base prose-code:text-white-500 prose-em:italic prose-a:underline prose-a:text-blueDark-500 prose-hr:bg-white-500/5 prose-figure:w-full prose-figure:h-96 prose-figcaption:text-sm md:prose-figcaption:text-base prose-p:indent-8">
+                    <div dangerouslySetInnerHTML={{ __html: cleanHTML(post.content) }}></div>
+                </article>
+            </div>
+        </section>
     )
 }
 
