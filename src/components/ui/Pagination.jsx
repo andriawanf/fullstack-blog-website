@@ -60,8 +60,7 @@ function Pagination({ pages = 6, setCurrentPage }) {
         <ol className="flex items-center justify-center gap-1 text-xs font-medium font-nunito">
             {/* Button Prev */}
             <li className="group">
-                <a
-                    href="#"
+                <button
                     className={`${currentButton === 1 ? "inline-flex items-center justify-center w-10 h-10 text-white-500 border border-white-500/25 rounded-xl bg-white-500/10 rtl:rotate-180 group-hover:bg-white-500/15 group-hover:text-white-500 cursor-not-allowed" : "inline-flex items-center justify-center w-10 h-10 text-white-500 border border-white-500/25 rounded-xl bg-white-500/10 rtl:rotate-180 group-hover:bg-white-500/15 group-hover:text-white-500 cursor-pointer"}`}
                     onClick={() => setCurrentButton((prev) => prev <= 1 ? prev : prev - 1)}
                 >
@@ -78,25 +77,23 @@ function Pagination({ pages = 6, setCurrentPage }) {
                             clipRule="evenodd"
                         />
                     </svg>
-                </a>
+                </button>
             </li>
 
             {arrOfCurrButtons.map(((item, index) => {
                 return <li className="group" key={index}>
-                    <a
-                        href="#"
+                    <button
                         className={`${currentButton === item ? 'flex items-center justify-center w-10 h-10 leading-8 text-center font-nunito font-bold text-black-500 border bg-gradient-to-r from-blueDark-500 to-blueLight-500 border-white-500/25 rounded-xl' : 'font-nunito font-medium flex items-center justify-center w-10 h-10 leading-8 text-center text-black-500 bg-white-500/5 border border-white-500/5 rounded-xl group-hover:bg-gradient-to-r group-hover:from-blueDark-500 group-hover:to-blueLight-500'}`}
                         onClick={() => setCurrentButton(item)}
                     >
                         {item}
-                    </a>
+                    </button>
                 </li>
             }))}
 
             {/* Button Next */}
             <li className="group">
-                <a
-                    href="#"
+                <button
                     className={`${currentButton === numberOfPage.length ? "inline-flex items-center justify-center w-10 h-10 text-white-500 border border-white-500/25 rounded-xl bg-white-500/10 rtl:rotate-180 group-hover:bg-white-500/15 group-hover:text-white-500 cursor-not-allowed" : "inline-flex items-center justify-center w-10 h-10 text-white-500 border border-white-500/25 rounded-xl bg-white-500/10 rtl:rotate-180 group-hover:bg-white-500/15 group-hover:text-white-500 cursor-pointer"}`}
                     onClick={() => setCurrentButton((prev) => prev >= numberOfPage.length ? prev : prev + 1)}
                 >
@@ -113,7 +110,7 @@ function Pagination({ pages = 6, setCurrentPage }) {
                             clipRule="evenodd"
                         />
                     </svg>
-                </a>
+                </button>
             </li>
         </ol>
     )
