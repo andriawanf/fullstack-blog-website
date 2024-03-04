@@ -1,5 +1,5 @@
-const FormatDates = ({publishedAt}) => {
-    const apiDate = new Date("2024-01-16T22:45:00Z");
+const FormatDates = ({createdAt}) => {
+    const apiDate = new Date(createdAt);
 
     // Daftar nama bulan
     const months = [
