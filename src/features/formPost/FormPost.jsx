@@ -100,28 +100,28 @@ export default function FormPost() {
                     <SelectOption htmlFor="category" title="Category" name="category" id="category" option={categoryOptions} action={(e) => setFormData({ ...formData, category: e.target.value })} />
                 </div>
                 <div className="">
-                    <label htmlFor="cover-photo" className="font-semibold leading-none text-md font-dm peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                    <label htmlFor="cover-photo" className="font-medium leading-none text-md font-dm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white-500">
                         <span>Cover image</span>{imageUploadError && <span className="pl-2 text-sm text-error">*{imageUploadError}</span>}
                     </label>
-                    <div className="flex flex-col items-center justify-between gap-4 p-3 border-2 border-dashed rounded-md border-primaryContent/30 mt-1.5 bg-foreground">
-                        <div className="flex justify-center w-full mt-2 border border-dashed rounded-lg border-gray-900/25">
+                    <div className="flex flex-col items-center justify-between gap-4 p-4  rounded-3xl mt-1.5 bg-white-500">
+                        <div className="flex justify-center w-full border border-dashed rounded-xl border-white-700">
                             {
                                 formData.imageContent ? (
                                     <img src={formData.imageContent} alt="upload" className="object-cover w-full rounded-lg h-72" />
                                 ) : (
                                     <div className="px-6 py-10 text-center">
-                                        <i className="w-12 h-12 mx-auto text-gray-300 ri-image-fill" aria-hidden="true" />
-                                        <div className="flex mt-4 text-sm leading-6 text-gray-600">
+                                        <i className="w-12 h-12 mx-auto text-white-700 ri-image-fill" aria-hidden="true" />
+                                        <div className="flex mt-4 text-sm leading-6 text-white-700">
                                             <label
                                                 htmlFor="imageContent"
-                                                className="relative px-2 font-semibold rounded-md cursor-pointer bg-foreground text-primary focus-within:outline-none focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 hover:text-primaryLight"
+                                                className="relative px-2 font-semibold rounded-md cursor-pointer bg-white-500 text-blueDark-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-blueDark-500 focus-within:ring-offset-2 hover:text-blueDark-700"
                                             >
                                                 <span>Upload a file</span>
                                                 <input id="imageContent" name="imageContent" type="file" className="sr-only" accept="image/*" onChange={(e) => setImageFile(e.target.files[0])} />
                                             </label>
                                             <p className="pl-1">or drag and drop</p>
                                         </div>
-                                        <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 2MB</p>
+                                        <p className="text-xs leading-5 text-white-700">PNG, JPG, GIF up to 2MB</p>
                                     </div>
                                 )
                             }
@@ -130,37 +130,36 @@ export default function FormPost() {
                             imageUploadProgress ? (
                                 <Progress value={imageUploadProgress} label="completed" color="amber" size="lg" />
                             ) : (
-                                <button
-                                    className={`relative inline-flex items-center justify-center px-8 py-3 overflow-hidden text-primaryContent bg-primary rounded-md group focus:outline-none focus:ring w-full`}
-                                    type="button"
+                                <Button
+                                    className={`relative inline-flex items-center justify-center overflow-hidden text-black-500 capitalize bg-gradient-to-r from-blueDark-500 to-blueLight-500 rounded-xl group focus:outline-none focus:ring w-full`}
                                     onClick={handleUploadImage}
                                     disabled={imageUploadProgress}
                                 >
                                     <span className="text-sm font-medium font-nunito">
                                         Upload Image
                                     </span>
-                                </button>
+                                </Button>
                             )
                         }
                     </div>
                 </div>
                 <div>
-                    <label htmlFor="OrderNotes" className="font-semibold leading-none text-md font-dm peer-disabled:cursor-not-allowed peer-disabled:opacity-70"> Description </label>
+                    <label htmlFor="OrderNotes" className="font-medium leading-none text-md font-dm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white-500"> Description </label>
 
                     <textarea
                         id="description"
-                        className="w-full px-3 py-2 mt-1.5 text-sm font-medium border rounded-md bg-foreground border-black/30 placeholder:text-primaryContent/60 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 font-nunito"
+                        className="w-full px-3 py-2 mt-1.5 text-black-500 text-sm font-medium border rounded-md bg-white-500 border-black/30 placeholder:text-white-700 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 font-nunito"
                         rows="5"
                         placeholder="Enter any description about your blog..."
                         onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     ></textarea>
                 </div>
-                <div className="bg-foreground rounded-lg border border-primaryContent/30">
+                <div className="border rounded-3xl bg-white-500 border-white-700">
                     <TipTapEditor />
                 </div>
                 <div className="flex justify-end">
                     {/* <Button title={isLoading ? "Loading..." : "Submit"} bgColor="bg-primary" size="w-fit" type="submit" /> */}
-                    <Button size="lg" variant="gradient" color="yellow" type="submit">{isLoading ? "Loading..." : "Submit"}</Button>
+                    <Button size="md" variant="filled" type="submit" className='text-sm font-semibold capitalize text-black-500 font-nunito rounded-xl bg-gradient-to-r from-blueDark-500 to-blueLight-500 '>{isLoading ? "Loading..." : "Submit"}</Button>
                 </div>
             </form>
         </div>

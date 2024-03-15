@@ -67,13 +67,13 @@ function TipTapEditor() {
 
     return (
         <>
-            <div className='flex justify-between items-start p-4 border-b border-primaryContent/30'>
+            <div className='flex items-start justify-between p-4 border-b border-white-700'>
                 {editor && <MenuBarTipTap editor={editor} />}
                 {/* <button className='px-3 py-1.5 bg-primaryContent rounded-lg text-primaryBackground'>
                     {debouncedEditorState ? "Saving..." : "Saved"}
                 </button> */}
             </div>
-            <div className='prose max-w-7xl'>
+            <div className='p-4 prose max-w-7xl rounded-3xl focus:outline-none'>
                 <EditorContent editor={editor}/>
             </div>
         </>

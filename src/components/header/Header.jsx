@@ -3,7 +3,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 // import Button from './components/button/Button';
 import styles from './header.module.scss';
 import Nav from './components/nav/Nav';
-import { IconButton, Button  } from "@material-tailwind/react";
+import { IconButton, Button } from "@material-tailwind/react";
+import { Link } from 'react-router-dom';
 
 const menu = {
     open: {
@@ -57,8 +58,12 @@ export default function Header() {
                 {/* <h1 className='hidden text-xl font-bold text-transparent uppercase lg:block font-dm bg-clip-text bg-gradient-to-r from-blueDark-500 to-blueLight-500'>OutOfYourBrains</h1> */}
             </div>
             <div className='flex items-center gap-2'>
-                <Button variant='text' size='md' ripple={false} className='text-sm font-semibold capitalize text-white-500 font-nunito rounded-xl '>Blogs</Button>
-                <Button variant='filled' size='md' className='text-sm font-semibold capitalize text-black-500 font-nunito rounded-xl bg-gradient-to-r from-blueDark-500 to-blueLight-500 '>Create blog</Button>
+                <Link to="/blogs">
+                    <Button variant='text' size='md' ripple={false} className='text-sm font-semibold capitalize text-white-500 font-nunito rounded-xl '>Blogs</Button>
+                </Link>
+                <Link to="/blog/write">
+                    <Button variant='filled' size='md' className='text-sm font-semibold capitalize text-black-500 font-nunito rounded-xl bg-gradient-to-r from-blueDark-500 to-blueLight-500 '>Create blog</Button>
+                </Link>
             </div>
             {/* {isLogin ? (
                 <div className='relative flex items-center gap-2 w-fit'>
