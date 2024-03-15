@@ -1,15 +1,3 @@
-import {
-    Button,
-    IconButton,
-    Menu,
-    MenuHandler,
-    MenuList,
-    MenuItem,
-    Tooltip,
-    Input,
-    Textarea
-} from "@material-tailwind/react";
-
 
 function Footers() {
     return (
@@ -18,8 +6,7 @@ function Footers() {
             <div className="flex items-center gap-4 text-base font-normal font-nunito text-white-700">
                 <a href="/" className="hover:text-white-500">Home</a>
                 <a href="/"  className="hover:text-white-500">Blogs</a>
-                <a href="/" className="hover:text-white-500">About Us</a>
-                <a href="/" className="hover:text-white-500">Contact</a>
+                <a href="/"  className="hover:text-white-500">Create Blogs</a>
             </div>
         </section>
     )

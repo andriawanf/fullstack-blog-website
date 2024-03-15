@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion';
-import Button from './components/button/Button';
+// import Button from './components/button/Button';
 import styles from './header.module.scss';
 import Nav from './components/nav/Nav';
-import { IconButton, Button as ButtonAuth } from "@material-tailwind/react";
+import { IconButton, Button  } from "@material-tailwind/react";
 
 const menu = {
     open: {
@@ -53,10 +53,14 @@ export default function Header() {
             transition={{ type: "spring", bounce: 0.25 }}
         >
             <div className='flex items-center gap-2'>
-                <img src="/src/assets/icons/logo.svg" alt="logo-website" className='w-8' />
-                <h1 className='hidden text-xl font-bold text-transparent uppercase lg:block font-dm bg-clip-text bg-gradient-to-r from-blueDark-500 to-blueLight-500'>OutOfYourBrains</h1>
+                <img src="/src/assets/icons/logo.svg" alt="logo-website" className='w-6' />
+                {/* <h1 className='hidden text-xl font-bold text-transparent uppercase lg:block font-dm bg-clip-text bg-gradient-to-r from-blueDark-500 to-blueLight-500'>OutOfYourBrains</h1> */}
             </div>
-            {isLogin ? (
+            <div className='flex items-center gap-2'>
+                <Button variant='text' size='md' ripple={false} className='text-sm font-semibold capitalize text-white-500 font-nunito rounded-xl '>Blogs</Button>
+                <Button variant='filled' size='md' className='text-sm font-semibold capitalize text-black-500 font-nunito rounded-xl bg-gradient-to-r from-blueDark-500 to-blueLight-500 '>Create blog</Button>
+            </div>
+            {/* {isLogin ? (
                 <div className='relative flex items-center gap-2 w-fit'>
                     <IconButton className='border-t border-l rounded-full font-nunito bg-black-500 border-white-500/10 hover:bg-black-400/25 hover:backdrop-blur-xl' size='lg' variant="filled">
                         <i className="ri-sun-line ri-lg text-white-500"></i>
@@ -80,7 +84,7 @@ export default function Header() {
                     </IconButton>
                     <ButtonAuth className='font-semibold border-t border-l rounded-full font-nunito bg-black-500 border-white-500/10 hover:bg-black-400/25 hover:backdrop-blur-xl' size='lg'>Login</ButtonAuth>
                 </div>
-            )}
+            )} */}
         </motion.div>
     )
 }

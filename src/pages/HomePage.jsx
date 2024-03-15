@@ -45,8 +45,14 @@ function HomePage() {
 
     return (
         <>
-            <img src="/download (1).png" alt="bg-hero" className="absolute top-0 w-full h-full rounded-[3rem] left-0 opacity-30 z-10" />
-            <section className="relative z-10 pt-8 xl:pt-16">
+            {/* <div className="absolute top-0 left-0 w-full h-screen overflow-hidden">
+                <img
+                    src="/src/assets/ooorganize.svg"
+                    alt=""
+                    className="absolute top-0 left-0 object-cover w-full h-auto bg-repeat"
+                />
+            </div> */}
+            <section className="relative z-10 px-2 py-8 md:py-24 lg:px-16 lg:py-16">
                 <HeroSection />
             </section>
 
@@ -86,7 +92,7 @@ function HomePage() {
                     <div className="flex flex-col items-center justify-center w-full gap-4 xl:gap-8">
                         <h1 className="text-3xl font-bold text-center xl:max-w-6xl lg:text-4xl xl:text-6xl text-white-500 font-dm">Begin Your Blogging Journey Today!</h1>
                         <p className="text-base font-normal lg:text-lg font-nunito text-white-700">The sooner you start, the better the results!</p>
-                        <Button size="lg" variant="filled" className="rounded-full font-nunito bg-white-500 hover:bg-white-700">Create Blog</Button>
+                        <Button size="lg" variant="filled" className="capitalize rounded-2xl font-nunito bg-white-500 hover:bg-white-700">Create Blog</Button>
                     </div>
                 </div>
             </section>
